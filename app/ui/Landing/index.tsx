@@ -44,7 +44,7 @@ export default function Home() {
       <div className={styles.imageContainer}>
         <Image
           className={styles.background}
-          src="/images/background.jpg"
+          src="/images/background.png"
           alt="background"
           layout="fill"
         />
