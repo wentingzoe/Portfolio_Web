@@ -10,11 +10,16 @@ export default function Home() {
 
   return (
     <main className={styles.landing}>
-      <Image src="/images/background.jpg" fill={true} alt="background" />
+      <Image
+        className={styles.background}
+        src="/images/background.jpg"
+        alt="background"
+        layout="fill"
+      />
       <div className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
           <p ref={firstText}>Front-End Developer -</p>
-          <p ref={secondText}>Design -</p>
+          <p ref={secondText}>Designer -</p>
         </div>
       </div>
     </main>

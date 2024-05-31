@@ -1,0 +1,6 @@
+.background {
+  width: 100%; /* This will make the image take the full width of its container */
+  height: auto; /* This will maintain the aspect ratio of the image */
+  object-fit: cover; /* This will make sure the image covers the full width/height of the container */
+  object-position: center; /* This will center the image within the container */
+}
