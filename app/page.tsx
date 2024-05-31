@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import styles from "@/app/ui/page.module.scss";
+import Landing from "@/app/ui/Landing";
 
 export default function Home() {
   useEffect(() => {
@@ -12,8 +13,8 @@ export default function Home() {
 
   return (
     <main>
-      <div> Zoe Portfolio</div>
-      {/* <AnimatePresence mode='wait'>
+      <div>
+        {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing />
@@ -21,6 +22,8 @@ export default function Home() {
       <Projects />
       <SlidingImages />
       <Contact /> */}
+        <Landing />
+      </div>
     </main>
   );
 }
