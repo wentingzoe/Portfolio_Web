@@ -1,6 +1,38 @@
+.landing {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  margin-bottom: 100vh;
+  overflow: hidden;
+}
+
 .background {
-  width: 100%; /* This will make the image take the full width of its container */
-  height: auto; /* This will maintain the aspect ratio of the image */
-  object-fit: cover; /* This will make sure the image covers the full width/height of the container */
-  object-position: center; /* This will center the image within the container */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sliderContainer {
+  position: absolute;
+  top: calc(100vh - 280px);
+}
+
+.slider {
+  position: relative;
+  white-space: nowrap;
+}
+
+.slider p {
+  position: relative;
+  margin: 0px;
+  font-size: 230px;
+  font-weight: 500;
+  padding-right: 50px;
+}
+
+.slider p:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+  top: 0;
 }
