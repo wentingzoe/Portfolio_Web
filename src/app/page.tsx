@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <main>
-      <div> Zoe's Portfolio</div>
+      <div> Zoe Portfolio</div>
       {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
