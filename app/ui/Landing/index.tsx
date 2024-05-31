@@ -41,12 +41,14 @@ export default function Home() {
 
   return (
     <main className={styles.landing}>
-      <Image
-        className={styles.background}
-        src="/images/background.jpg"
-        alt="background"
-        layout="fill"
-      />
+      <div className={styles.imageContainer}>
+        <Image
+          className={styles.background}
+          src="/images/background.jpg"
+          alt="background"
+          layout="fill"
+        />
+      </div>
       <div className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
           <p ref={firstText}>UI Developer -</p>
