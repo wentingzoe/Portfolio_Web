@@ -1,9 +1,20 @@
-@import "colors";
+// @import "colors";
 
+:root {
+  --color-primary: #bb6b5c;
+  --color-secondary: #d3c7c0;
+  --color-tertiary: #a6c0d6;
+  --color-white: #ffffff;
+
+  --color-primary-light: lighten($color-primary, 15%);
+  --color-primary-dark: darken($color-primary, 15%);
+  --color-secondary-light: lighten($color-secondary, 10%);
+  --color-secondary-dark: darken($color-secondary, 10%);
+}
 body {
   margin: 0px;
   overflow: hidden; /* Hide scrollbars */
   /* cursor: wait; Add after Preloader*/
-  color: $color-text;
-  background-color: $color-primary;
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
