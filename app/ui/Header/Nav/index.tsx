@@ -1,4 +1,5 @@
 import styles from "./style.module.scss";
+import Link from "./Link";
 
 export default function index() {
   const navItems = [
@@ -29,9 +30,9 @@ export default function index() {
         <div className={styles.nav}>
           <div className={styles.header}>
             <p>Navigation</p>
-            {/* { navItems.map((item, index) => {
-							return <Link data={{...item,index}}/>
-						})} */}
+            {navItems.map((item, index) => {
+              return <Link key={index} data={{ ...item, index }} />;
+            })}
           </div>
         </div>
       </div>
