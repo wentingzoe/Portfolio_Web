@@ -1,0 +1,46 @@
+@import "variables";
+
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-tertiary: #{$color-tertiary};
+  --color-text-light: #{$color-text-light};
+  --color-text-dark: #{$color-text-dark};
+
+  --color-primary-light: #{lighten($color-primary, 15%)};
+  --color-primary-dark: #{darken($color-primary, 15%)};
+  --color-secondary-light: #{lighten($color-secondary, 15%)};
+  --color-secondary-dark: #{darken($color-secondary, 15%)};
+  --color-tertiary-light: #{lighten($color-tertiary, 15%)};
+  --color-tertiary-dark: #{darken($color-tertiary, 15%)};
+
+  --font-size-base: var($font-size-base);
+  --font-size-md: var($font-size-md);
+  --font-size-lg: var($font-size-lg);
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+  /* cursor: wait; Add after Preloader*/
+  color: var(--color-text-light);
+  background-color: var(--color-primary);
+
+  font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@include respond-to("medium") {
+  :root {
+    font-size: var(--font-size-md);
+    background-color: var(--color-secondary); //test
+  }
+}
+
+@include respond-to("large") {
+  :root {
+    font-size: var(--font-size-lg);
+    background-color: var(--color-tertiary); //test
+  }
+}
