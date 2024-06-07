@@ -1,9 +1,21 @@
+//Font Variables
+$font-size-base: 16px;
+$font-size-md: 20px;
+$font-size-lg: 24px;
+
 // Color Variables
 $color-primary: #bb6b5c;
 $color-secondary: #d3c7c0;
 $color-tertiary: #a6c0d6;
 $color-text-light: #ffffff;
 $color-text-dark: #000000;
+
+$color-primary-light: lighten($color-primary, 15%);
+$color-primary-dark: darken($color-primary, 15%);
+$color-secondary-light: lighten($color-secondary, 15%);
+$color-secondary-dark: darken($color-secondary, 15%);
+$color-tertiary-light: lighten($color-tertiary, 15%);
+$color-tertiary-dark: darken($color-tertiary, 15%);
 
 // Define breakpoints
 $breakpoints: (
@@ -25,8 +37,3 @@ $breakpoints: (
     @warn "Unknown breakpoint: #{$breakpoint}.";
   }
 }
-
-//Font Variables
-$font-size-base: 16px;
-$font-size-md: 20px;
-$font-size-lg: 24px;
