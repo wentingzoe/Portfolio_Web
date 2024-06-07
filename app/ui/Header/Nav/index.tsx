@@ -30,10 +30,10 @@ export default function index() {
         <div className={styles.nav}>
           <div className={styles.header}>
             <p>Navigation</p>
-            {navItems.map((item, index) => {
-              return <Link key={index} data={{ ...item, index }} />;
-            })}
           </div>
+          {navItems.map((item, index) => {
+            return <Link key={index} data={{ ...item, index }} />;
+          })}
         </div>
       </div>
     </div>
