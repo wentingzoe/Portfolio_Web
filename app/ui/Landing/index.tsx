@@ -43,7 +43,13 @@ export default function Home() {
     <main className={styles.landing}>
       <div className={styles.imageContainer}>
         <Image
-          className={styles.background}
+          className={`${styles.background} ${styles.mobile}`}
+          src="/images/background_mobile.png"
+          alt="background mobile"
+          layout="fill"
+        />
+        <Image
+          className={`${styles.background} ${styles.desktop}`}
           src="/images/background.png"
           alt="background"
           layout="fill"
