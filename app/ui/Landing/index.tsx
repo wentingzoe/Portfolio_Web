@@ -46,13 +46,13 @@ export default function Home() {
           className={`${styles.background} ${styles.mobile}`}
           src="/images/background_mobile.png"
           alt="background mobile"
-          layout="fill"
+          fill={true}
         />
         <Image
           className={`${styles.background} ${styles.desktop}`}
           src="/images/background.png"
           alt="background"
-          layout="fill"
+          fill={true}
         />
       </div>
       <div className={styles.sliderContainer}>
