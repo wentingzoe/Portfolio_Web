@@ -1,3 +1,6 @@
+:root {
+  font-size: $font-size-base;
+}
 body {
   margin: 0px;
   overflow: hidden;
@@ -5,20 +8,19 @@ body {
   color: $color-text-light;
   background-color: $color-primary;
 
-  font-size: $font-size-base;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 @include respond-to("medium") {
-  body {
+  :root {
     font-size: $font-size-md;
     background-color: $color-secondary; //test
   }
 }
 
 @include respond-to("large") {
-  body {
+  :root {
     font-size: $font-size-lg;
     background-color: $color-tertiary; //test
   }
