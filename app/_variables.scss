@@ -1,0 +1,32 @@
+// Color Variables
+$color-primary: #bb6b5c;
+$color-secondary: #d3c7c0;
+$color-tertiary: #a6c0d6;
+$color-text-light: #ffffff;
+$color-text-dark: #000000;
+
+// Define breakpoints
+$breakpoints: (
+  "small": 480px,
+  // Mobile devices
+  "medium": 768px,
+  // Tablets
+  "large": 1024px,
+  // Small desktops
+);
+
+// Mixin for responsive design
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}.";
+  }
+}
+
+//Font Variables
+$font-size-base: 16px;
+$font-size-md: 20px;
+$font-size-lg: 24px;
