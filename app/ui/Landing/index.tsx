@@ -36,7 +36,7 @@ export default function Home() {
     gsap.set(firstText.current, { xPercent: xPercent });
     gsap.set(secondText.current, { xPercent: xPercent });
     requestAnimationFrame(animate);
-    xPercent += 0.1 * direction;
+    xPercent += 0.07 * direction;
   };
 
   return (
@@ -46,13 +46,13 @@ export default function Home() {
           className={`${styles.background} ${styles.mobile}`}
           src="/images/background_mobile.png"
           alt="background mobile"
-          layout="fill"
+          fill={true}
         />
         <Image
           className={`${styles.background} ${styles.desktop}`}
           src="/images/background.png"
           alt="background"
-          layout="fill"
+          fill={true}
         />
       </div>
       <div className={styles.sliderContainer}>
