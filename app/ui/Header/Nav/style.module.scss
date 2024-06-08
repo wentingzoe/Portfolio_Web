@@ -2,7 +2,7 @@
   position: fixed;
   right: 0;
   height: 100vh;
-  background-color: var(--color-primary-dark);
+  background-color: $color-primary-dark;
 
   .body {
     padding: 100px;
@@ -14,10 +14,10 @@
       flex-direction: column;
       gap: 12px;
       margin-top: 80px;
-      font-size: var(--font-size-base);
+      font-size: $font-size-base;
 
       .header {
-        font-size: calc(var(--font-size-base) * 0.8);
+        font-size: 0.8rem;
       }
     }
   }
