@@ -15,7 +15,7 @@ export const slide = {
     x: "80px",
   },
   enter: {
-    x: "8px",
+    x: "0px",
   },
   exit: {
     x: "80px",
