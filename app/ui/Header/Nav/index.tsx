@@ -1,5 +1,6 @@
 import styles from "./style.module.scss";
 import Link from "./Link";
+import Footer from "./Footer";
 import { menuSlide } from "../animations";
 import { motion } from "framer-motion";
 
@@ -43,6 +44,7 @@ export default function index() {
             return <Link key={index} data={{ ...item, index }} />;
           })}
         </div>
+        <Footer />
       </div>
     </motion.div>
   );
