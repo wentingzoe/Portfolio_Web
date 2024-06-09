@@ -1,5 +1,7 @@
 import styles from "./style.module.scss";
 import Link from "./Link";
+import { menuSlide } from "../animations";
+import { motion } from "framer-motion";
 
 export default function index() {
   const navItems = [
@@ -25,7 +27,13 @@ export default function index() {
     },
   ];
   return (
-    <div className={styles.menu}>
+    <motion.div
+      variants={menuSlide}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className={styles.menu}
+    >
       <div className={styles.body}>
         <div className={styles.nav}>
           <div className={styles.header}>
@@ -36,6 +44,6 @@ export default function index() {
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
