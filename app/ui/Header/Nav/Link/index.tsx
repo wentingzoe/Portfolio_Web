@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { slide } from "../../animations";
 
 export default function index({ data }: { data: any }) {
+  console.log("data", data);
   return (
     <motion.div
+      custom={data.index}
       variants={slide}
       initial="initial"
       animate="enter"
