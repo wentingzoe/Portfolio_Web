@@ -2,7 +2,7 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
 import { useRef, useLayoutEffect } from "react";
-import gsap from "gsap"; // Import the 'gsap' package
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
     gsap.to(slider.current, {
       scrollTrigger: {
         trigger: document.documentElement,
-        scrub: 0.25,
+        scrub: 0.25, //smooth scrubbing, takes 0.25 second to "catch up" to the scrollbar
         start: 0,
         end: window.innerHeight,
         onUpdate: (e) => (direction = e.direction * -1),
@@ -37,6 +37,7 @@ export default function Home() {
     gsap.set(secondText.current, { xPercent: xPercent });
     requestAnimationFrame(animate);
     xPercent += 0.07 * direction;
+    // control the speed and direction of the animation
   };
 
   return (
