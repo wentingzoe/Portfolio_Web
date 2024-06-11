@@ -1,4 +1,4 @@
-// Color Variables
+/* -----Color Variables----- */
 $color-primary: #bb6b5c;
 $color-secondary: #d3c7c0;
 $color-tertiary: #a6c0d6;
@@ -12,17 +12,17 @@ $color-secondary-dark: darken($color-secondary, 15%);
 $color-tertiary-light: lighten($color-tertiary, 15%);
 $color-tertiary-dark: darken($color-tertiary, 15%);
 
-// Define breakpoints
+/* -----Define breakpoints----- */
 $breakpoints: (
-  "small": 480px,
+  "small": 540px,
   // Mobile devices
-  "medium": 768px,
+  "medium": 720px,
   // Tablets
-  "large": 1024px,
+  "large": 1200px,
   // Small desktops
 );
 
-// Mixin for responsive design
+/* -----Mixin for responsive design----- */
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {
     @media (min-width: map-get($breakpoints, $breakpoint)) {
@@ -32,3 +32,15 @@ $breakpoints: (
     @warn "Unknown breakpoint: #{$breakpoint}.";
   }
 }
+
+/*----- Animation variables-----*/
+// for controlling the duration and easing of animations
+$animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+$animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+$animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+$animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+
+/*----- Container Padding variables-----*/
+$section-padding: clamp(5em, 21vh, 12em);
+$container-padding: clamp(2.5em, 8vw, 8em);
+$gap-padding: clamp(1.5em, 4vw, 2.5em);

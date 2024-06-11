@@ -11,7 +11,7 @@
     position: absolute;
     right: 30px;
 
-    @include respond-to("medium") {
+    @include respond-to("small") {
       right: 0;
       left: -40px;
     }

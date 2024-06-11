@@ -1,3 +1,8 @@
+:root {
+  --section-padding: $section-padding;
+  --container-padding: $container-padding;
+  --gap-padding: $gap-padding;
+}
 *,
 *:after,
 *:before {
@@ -32,16 +37,22 @@ body {
   background-color: $color-primary;
 }
 
+@include respond-to("small") {
+  :root {
+    --container-padding: clamp(1.25em, 4vw, 2.5em);
+    --section-padding: max(2.5em, 12vh);
+    background-color: $color-primary-light; //test
+  }
+}
 @include respond-to("medium") {
-  body {
-    // font-size: $font-size-md;
+  :root {
+    --section-padding: 12vh;
     background-color: $color-secondary; //test
   }
 }
-
 @include respond-to("large") {
-  body {
-    // font-size: $font-size-lg;
+  :root {
+    --container-padding: 6vw;
     background-color: $color-tertiary; //test
   }
 }
