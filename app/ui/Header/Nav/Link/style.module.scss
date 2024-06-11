@@ -9,6 +9,11 @@
     background-color: $color-text-light;
     border-radius: 50%;
     position: absolute;
-    left: -30px;
+    right: 30px;
+
+    @include respond-to("medium") {
+      right: 0;
+      left: -40px;
+    }
   }
 }
