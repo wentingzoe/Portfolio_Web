@@ -1,6 +1,7 @@
 import styles from "./style.module.scss";
 import Link from "./Link";
 import Footer from "./Footer";
+import Curve from "./Curve";
 import { menuSlide } from "../animations";
 import { motion } from "framer-motion";
 
@@ -46,6 +47,7 @@ export default function index() {
         </div>
         <Footer />
       </div>
+      <Curve />
     </motion.div>
   );
 }
