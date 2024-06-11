@@ -1,4 +1,4 @@
-.menu {
+.nav {
   position: fixed;
   right: 0;
   top: 0;
@@ -7,7 +7,7 @@
   background-color: $color-primary-dark;
   z-index: 1;
 
-  .body {
+  .inner {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
       padding: 10vh 7.5vw;
     }
 
-    .nav {
+    .row {
       display: flex;
       flex-direction: column;
       gap: 0.4rem;

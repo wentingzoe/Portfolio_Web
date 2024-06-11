@@ -23,7 +23,7 @@
       display: block;
     }
 
-    @include respond-to("medium") {
+    @include respond-to("large") {
       &.desktop {
         display: block;
       }

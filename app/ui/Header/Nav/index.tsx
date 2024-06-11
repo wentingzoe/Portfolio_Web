@@ -1,6 +1,6 @@
 import styles from "./style.module.scss";
 import Link from "./Link";
-import Footer from "./Footer";
+import Social from "./Social";
 import Curve from "./Curve";
 import { menuSlide } from "../animations";
 import { motion } from "framer-motion";
@@ -20,12 +20,12 @@ export default function index() {
       href: "/work",
     },
     {
-      title: "Contact",
-      href: "/contact",
-    },
-    {
       title: "Blog",
       href: "/blog",
+    },
+    {
+      title: "Contact",
+      href: "/contact",
     },
   ];
   return (
@@ -34,10 +34,10 @@ export default function index() {
       initial="initial"
       animate="enter"
       exit="exit"
-      className={styles.menu}
+      className={styles.nav}
     >
-      <div className={styles.body}>
-        <div className={styles.nav}>
+      <div className={styles.inner}>
+        <div className={styles.row}>
           <div className={styles.header}>
             <p>Navigation</p>
           </div>
@@ -45,7 +45,7 @@ export default function index() {
             return <Link key={index} data={{ ...item, index }} />;
           })}
         </div>
-        <Footer />
+        <Social />
       </div>
       <Curve />
     </motion.div>
