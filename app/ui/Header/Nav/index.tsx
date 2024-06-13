@@ -1,3 +1,4 @@
+"use client";
 import styles from "./style.module.scss";
 import NavLink from "./NavLink";
 import Social from "./Social";
@@ -5,30 +6,29 @@ import Curve from "./Curve";
 import { menuSlide } from "../animations";
 import { motion } from "framer-motion";
 
+const navItems = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+  {
+    title: "Work",
+    href: "/work",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+  },
+];
 export default function index() {
-  const navItems = [
-    {
-      title: "Home",
-      href: "/",
-    },
-    {
-      title: "About",
-      href: "/about",
-    },
-    {
-      title: "Work",
-      href: "/work",
-    },
-    {
-      title: "Blog",
-      href: "/blog",
-    },
-    {
-      title: "Contact",
-      href: "/contact",
-    },
-  ];
-
   return (
     <motion.div
       variants={menuSlide}

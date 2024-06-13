@@ -12,6 +12,17 @@
   background-color: $color-tertiary;
   cursor: pointer;
   z-index: 2;
+
+  &:hover {
+    background-color: $color-tertiary-dark;
+  }
+}
+.burgerButtonActive {
+  background-color: $color-tertiary-dark;
+
+  &:hover {
+    background-color: $color-tertiary;
+  }
 }
 
 .icon {
