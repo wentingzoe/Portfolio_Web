@@ -14,7 +14,7 @@
 
     @include respond-to("small") {
       right: auto;
-      margin-left: calc(var(--gap-padding) / -2);
+      margin-left: calc(var(--gap-padding) / -1);
     }
   }
 }

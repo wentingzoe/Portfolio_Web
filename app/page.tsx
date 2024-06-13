@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import styles from "@/app/page.module.scss";
 import Landing from "@/app/ui/Landing";
-import Header from "@/app/ui/Header";
 
 export default function Home() {
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function Home() {
       <Projects />
       <SlidingImages />
       <Contact /> */}
-        <Header />
         <Landing />
       </div>
     </main>
