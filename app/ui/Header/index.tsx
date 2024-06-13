@@ -13,10 +13,10 @@ export default function Home() {
         onClick={() => {
           setIsActive(!isActive);
         }}
-        className={styles.button}
+        className={styles.burgerButton}
       >
         <div
-          className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
+          className={`${styles.icon} ${isActive ? styles.iconActive : ""}`}
         ></div>
       </div>
       <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>

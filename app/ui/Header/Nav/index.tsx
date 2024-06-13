@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import Link from "./Link";
+import NavLink from "./NavLink";
 import Social from "./Social";
 import Curve from "./Curve";
 import { menuSlide } from "../animations";
@@ -28,6 +28,7 @@ export default function index() {
       href: "/contact",
     },
   ];
+
   return (
     <motion.div
       variants={menuSlide}
@@ -39,10 +40,10 @@ export default function index() {
       <div className={styles.inner}>
         <div className={styles.row}>
           <div className={styles.header}>
-            <p>Navigation</p>
+            <h5>Navigation</h5>
           </div>
           {navItems.map((item, index) => {
-            return <Link key={index} data={{ ...item, index }} />;
+            return <NavLink key={index} data={{ ...item, index }} />;
           })}
         </div>
         <Social />

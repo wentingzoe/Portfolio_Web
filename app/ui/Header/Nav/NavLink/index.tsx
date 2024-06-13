@@ -12,10 +12,12 @@ export default function index({ data }: { data: any }) {
       initial="initial"
       animate="enter"
       exit="exit"
-      className={styles.link}
+      className={styles.item}
     >
       <div className={styles.indicator}></div>
-      <Link href={data.href}>{data.title}</Link>
+      <Link href={data.href}>
+        <h3>{data.title}</h3>
+      </Link>
     </motion.div>
   );
 }
