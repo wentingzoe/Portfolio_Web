@@ -9,8 +9,8 @@ export default function Home() {
   const firstText = useRef(null);
   const secondText = useRef(null);
   const slider = useRef(null);
+  const direction = useRef(-1);
   let xPercent = 0;
-  let direction = -1;
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +20,7 @@ export default function Home() {
         scrub: 0.25, //smooth scrubbing, takes 0.25 second to "catch up" to the scrollbar
         start: 0,
         end: window.innerHeight,
-        onUpdate: (e) => (direction = e.direction * -1),
+        onUpdate: (e) => (direction.current = e.direction * -1),
       },
       x: "-500px",
     });
@@ -36,7 +36,7 @@ export default function Home() {
     gsap.set(firstText.current, { xPercent: xPercent });
     gsap.set(secondText.current, { xPercent: xPercent });
     requestAnimationFrame(animate);
-    xPercent += 0.07 * direction;
+    xPercent += 0.07 * direction.current;
     // control the speed and direction of the animation
   };
 

@@ -1,4 +1,5 @@
 "use client";
+
 import { usePathname } from "next/navigation";
 import styles from "./style.module.scss";
 import Link from "next/link";
@@ -6,7 +7,7 @@ import { motion } from "framer-motion";
 import { slide } from "../../animations";
 import clsx from "clsx";
 
-export default function index({ data }: { data: any }) {
+export default function NavLink({ data }: { data: any }) {
   const pathname = usePathname();
   return (
     <motion.div
