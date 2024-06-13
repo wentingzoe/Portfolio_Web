@@ -1,20 +1,20 @@
 // Header style
-.button {
-  position: fixed;
-  right: 0px;
-  margin: 20px;
-  z-index: 2;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background-color: $color-tertiary;
-  cursor: pointer;
+.burgerButton {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  right: calc(var(--gap-padding) / 1.5);
+  top: calc(var(--gap-padding) / 1.5);
+  width: clamp(4em, 5.5vw, 5em);
+  height: clamp(4em, 5.5vw, 5em);
+  border-radius: 50%;
+  background-color: $color-tertiary;
+  cursor: pointer;
+  z-index: 2;
 }
 
-.burger {
+.icon {
   width: 100%;
   &::after,
   &::before {
@@ -37,7 +37,7 @@
   }
 }
 
-.burgerActive {
+.iconActive {
   &::after {
     transform: rotate(45deg);
     top: -1px;
