@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import styles from "@/app/page.module.scss";
 import Landing from "@/app/ui/Landing";
+import Projects from "@/app/ui/Projects";
 
 export default function Home() {
   useEffect(() => {
@@ -19,10 +20,10 @@ export default function Home() {
       </AnimatePresence>
       <Landing />
       <Description />
-      <Projects />
       <SlidingImages />
       <Contact /> */}
         <Landing />
+        <Projects />
       </div>
     </main>
   );
