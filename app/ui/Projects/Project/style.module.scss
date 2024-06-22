@@ -1,0 +1,12 @@
+.project {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 5rem;
+  padding: var(--gap-padding) 0;
+
+  .title {
+    margin: 0;
+  }
+}
