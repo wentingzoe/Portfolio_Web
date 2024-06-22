@@ -14,17 +14,15 @@ export default function Home() {
 
   return (
     <main>
-      <div>
-        {/* <AnimatePresence mode='wait'>
+      {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing />
       <Description />
       <SlidingImages />
       <Contact /> */}
-        <Landing />
-        <Projects />
-      </div>
+      <Landing />
+      <Projects />
     </main>
   );
 }
