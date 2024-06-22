@@ -55,14 +55,6 @@ body {
   font-size: clamp(16px, 1.2vw, 19px);
 }
 
-html,
-body {
-  width: 100%;
-  -webkit-font-smoothing: antialiased;
-  position: relative;
-  background-color: $color-primary;
-}
-
 /* Typography */
 h1,
 h2,
