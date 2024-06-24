@@ -1,7 +1,7 @@
 "use client";
 import styles from "./style.module.scss";
 
-export default function Index({ index, title, role, setModal }) {
+export default function Index({ index, title, role, setModal }: any) {
   return (
     <div
       className={styles.project}
