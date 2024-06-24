@@ -13,11 +13,31 @@
   display: flex;
   width: 100%;
   justify-content: flex-start;
+}
+.item {
+  font-size: 0.8em;
+  margin-right: 2em;
+  margin-top: 1em;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: auto;
+}
+.underline {
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: $color-text-light;
+  border-radius: 5%;
+  transform: scaleX(0);
+  transform-origin: center bottom;
+  transition: transform 0.3s ease;
+}
 
-  .item {
-    font-size: 0.8em;
-    margin-right: 1em;
-  }
+.item:hover .underline {
+  transform: scaleX(1);
 }
 
 @include respond-to("small") {
@@ -27,5 +47,9 @@
 
   .items {
     justify-content: space-between;
+  }
+  .item {
+    margin-right: 0;
+    margin-top: 0;
   }
 }
