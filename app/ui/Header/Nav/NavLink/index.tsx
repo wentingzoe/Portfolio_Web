@@ -26,7 +26,7 @@ export default function NavLink({ data }: { data: any }) {
     >
       <motion.div
         variants={navLinkScale}
-        animate={isActive || isHovered ? "enter" : "closed"}
+        animate={isHovered ? "hover" : isActive ? "enter" : "exit"}
         className={clsx(styles.indicator, {
           [styles.active]: isActive,
           [styles.hover]: isHovered && !isActive,
