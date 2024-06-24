@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./style.module.scss";
 import { useState } from "react";
 import Project from "./Project";
+import Modal from "./Modal";
 import { projects } from "@/app/common/data";
 
 export default function Index() {
@@ -23,6 +24,7 @@ export default function Index() {
           );
         })}
       </div>
+      <Modal modal={modal} projects={projects} />
     </div>
   );
 }
