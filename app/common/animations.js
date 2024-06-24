@@ -19,6 +19,12 @@ export const navLinkSlide = {
   }),
 };
 
+export const navLinkScale = {
+  enter: { scale: 1.5, transition: { duration: 0.2 } },
+  hover: { scale: 1, transition: { duration: 0.2 } },
+  exit: { scale: 0, transition: { duration: 0.4 } },
+};
+
 export const modalScale = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
   enter: {
