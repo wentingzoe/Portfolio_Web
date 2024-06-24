@@ -1,3 +1,25 @@
+const navItems = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+  {
+    title: "Work",
+    href: "/work",
+  },
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+  },
+];
 const projects = [
   {
     title: "C2 Montreal",
@@ -45,6 +67,7 @@ const socialItems = [
 ];
 
 module.exports = {
+  navItems,
   projects,
   socialItems,
 };
