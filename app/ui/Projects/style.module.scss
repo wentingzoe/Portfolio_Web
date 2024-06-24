@@ -1,0 +1,18 @@
+.projects {
+  display: flex;
+  align-items: center;
+  padding: 2em 3em;
+
+  .container {
+    width: 100%;
+    padding: var(--container-padding);
+
+    .project {
+      border-top: 1px solid $color-secondary;
+
+      &:last-child {
+        border-bottom: 1px solid $color-secondary;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { slide } from "../../animations";
+import { navLinkSlide } from "@/app/common/animations";
 import clsx from "clsx";
 
 export default function NavLink({ data }: { data: any }) {
@@ -12,7 +12,7 @@ export default function NavLink({ data }: { data: any }) {
   return (
     <motion.div
       custom={data.index}
-      variants={slide}
+      variants={navLinkSlide}
       initial="initial"
       animate="enter"
       exit="exit"

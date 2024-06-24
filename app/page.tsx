@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import styles from "@/app/page.module.scss";
 import Landing from "@/app/ui/Landing";
+import Projects from "@/app/ui/Projects";
 
 export default function Home() {
   useEffect(() => {
@@ -13,17 +14,15 @@ export default function Home() {
 
   return (
     <main>
-      <div>
-        {/* <AnimatePresence mode='wait'>
+      {/* <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing />
       <Description />
-      <Projects />
       <SlidingImages />
       <Contact /> */}
-        <Landing />
-      </div>
+      <Landing />
+      <Projects />
     </main>
   );
 }

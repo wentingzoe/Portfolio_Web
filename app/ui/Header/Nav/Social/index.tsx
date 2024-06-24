@@ -1,20 +1,7 @@
 import styles from "./style.module.scss";
+import { socialItems } from "@/app/common/data";
 
 export default function index() {
-  const socialItems = [
-    {
-      title: "LinkedIn",
-      href: "https://www.linkedin.com/in/wentingyong/",
-    },
-    {
-      title: "GitHub",
-      href: "https://github.com/wentingzoe",
-    },
-    {
-      title: "Email",
-      href: "mailto:ywtzoe@gmail.com",
-    },
-  ];
   return (
     <div className={styles.social}>
       <div className={styles.header}>

@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import NavLink from "./NavLink";
 import Social from "./Social";
 import Curve from "./Curve";
-import { menuSlide } from "../animations";
+import { menuSlide } from "@/app/common/animations";
 import { motion } from "framer-motion";
 
 const navItems = [
