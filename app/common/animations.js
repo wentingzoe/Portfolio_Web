@@ -7,7 +7,7 @@ export const menuSlide = {
   },
 };
 
-export const slide = {
+export const navLinkSlide = {
   initial: { x: 80 },
   enter: (i) => ({
     x: 0,

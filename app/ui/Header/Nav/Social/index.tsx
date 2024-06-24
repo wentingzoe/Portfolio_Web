@@ -1,5 +1,5 @@
 import styles from "./style.module.scss";
-import { socialItems } from "@/app/common/data.js";
+import { socialItems } from "@/app/common/data";
 
 export default function index() {
   return (
