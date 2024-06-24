@@ -1,6 +1,8 @@
 "use client";
 import styles from "./style.module.scss";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { modalScale } from "@/app/common/animations";
 interface ModalProps {
   projects: {
     title: string;
@@ -18,7 +20,12 @@ interface ModalProps {
 export default function Modal({ projects, modal }: ModalProps) {
   const { active, index } = modal;
   return (
-    <div className={styles.container}>
+    <motion.div
+      variants={modalScale}
+      initial="initial"
+      animate={active ? "enter" : "closed"}
+      className={styles.container}
+    >
       <div style={{ top: index * -100 + "%" }} className={styles.slider}>
         {projects.map((project, index) => {
           const { src, color, title } = project;
@@ -39,6 +46,6 @@ export default function Modal({ projects, modal }: ModalProps) {
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }
