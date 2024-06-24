@@ -1,28 +1,39 @@
 "use client";
-
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { navLinkSlide } from "@/app/common/animations";
+import { navLinkSlide, navLinkScale } from "@/app/common/animations";
 import clsx from "clsx";
 
 export default function NavLink({ data }: { data: any }) {
+  const { title, href, index } = data;
   const pathname = usePathname();
+  const [isHovered, setIsHovered] = useState(false);
+  const isActive = pathname === href;
+
   return (
     <motion.div
-      custom={data.index}
+      custom={index}
       variants={navLinkSlide}
       initial="initial"
       animate="enter"
       exit="exit"
       className={styles.item}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
     >
-      <div
-        className={clsx({ [styles.indicator]: pathname === data.href })}
-      ></div>
-      <Link href={data.href}>
-        <h3>{data.title}</h3>
+      <motion.div
+        variants={navLinkScale}
+        animate={isActive || isHovered ? "enter" : "closed"}
+        className={clsx(styles.indicator, {
+          [styles.active]: isActive,
+          [styles.hover]: isHovered && !isActive,
+        })}
+      ></motion.div>
+      <Link href={href}>
+        <h3>{title}</h3>
       </Link>
     </motion.div>
   );
