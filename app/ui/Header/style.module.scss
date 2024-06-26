@@ -62,8 +62,24 @@
   &__nav {
     @include flex-center;
     margin: 0;
-  }
 
+    &--small {
+      display: block;
+
+      @include respond-to("medium") {
+        display: none;
+      }
+    }
+    &--large {
+      flex-direction: column;
+      display: none;
+
+      @include respond-to("medium") {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
   &__item {
     @include flex-center;
     position: relative;
@@ -88,6 +104,7 @@
 }
 
 /*--- Burger Menu---*/
+
 .burger-button {
   display: flex;
   align-items: center;
@@ -109,6 +126,7 @@
 
   &--active {
     background-color: $color-tertiary-dark;
+    transform: scale(1);
 
     &:hover {
       background-color: $color-tertiary;

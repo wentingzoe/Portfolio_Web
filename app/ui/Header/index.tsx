@@ -50,19 +50,32 @@ export default function Home() {
         </Link>
 
         <div className={styles.header__nav}>
-          {navItems.map(
-            (item, index) =>
-              index > 0 && (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={styles.header__item}
-                >
-                  <span>{item.title}</span>
-                  <span className={styles.header__indicator} />
-                </Link>
-              )
-          )}
+          <div
+            className={styles["header__nav--small"]}
+            onClick={() => {
+              setIsActive(!isActive);
+            }}
+          >
+            <div className={styles.header__item}>
+              <span>Menu</span>
+              <span className={styles.header__indicator} />
+            </div>
+          </div>
+          <div className={styles["header__nav--large"]}>
+            {navItems.map(
+              (item, index) =>
+                index > 0 && (
+                  <Link
+                    key={index}
+                    href={item.href}
+                    className={styles.header__item}
+                  >
+                    <span>{item.title}</span>
+                    <span className={styles.header__indicator} />
+                  </Link>
+                )
+            )}
+          </div>
         </div>
       </div>
       <div
