@@ -1,5 +1,111 @@
-// Header style
-.burgerButton {
+/*--- Header ---*/
+.header {
+  @include flex-center;
+  justify-content: space-between;
+  padding: calc(var(--gap-padding) / 2);
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+  color: $color-text-light;
+
+  // Header - Left Logo
+  &__logo {
+    @include flex-center;
+    cursor: pointer;
+
+    &:hover {
+      .header__copyright {
+        transform: rotate(360deg);
+      }
+      .header__name {
+        padding-right: clamp(0.5em, 2vw, 1em);
+      }
+      .header__codeBy {
+        transform: translateX(-100%);
+      }
+      .header__fn,
+      .header__ln {
+        transform: translateX(-4em);
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__copyright {
+    transition: $animation-primary;
+    font-size: 1.2em;
+    margin-right: 0.2em;
+  }
+
+  &__name {
+    @include flex-center;
+    transition: $animation-primary;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+
+    span {
+      transition: $animation-primary;
+      &:nth-of-type(2) {
+        padding-left: 0.3em;
+      }
+      &:nth-of-type(3) {
+        position: absolute;
+        left: 8.25em;
+        padding-left: 0.3em;
+      }
+    }
+  }
+
+  // Header - Right Navigation
+  &__nav {
+    @include flex-center;
+    margin: 0;
+
+    &--small {
+      display: block;
+
+      @include respond-to("medium") {
+        display: none;
+      }
+    }
+    &--large {
+      flex-direction: column;
+      display: none;
+
+      @include respond-to("medium") {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  &__item {
+    @include flex-center;
+    position: relative;
+    cursor: pointer;
+    margin-right: 1.5em;
+
+    &:hover .header__indicator {
+      transform: scale(1.5);
+    }
+  }
+  &__indicator {
+    position: absolute;
+    width: 0.35em;
+    height: 0.35em;
+    top: 2em;
+    left: 50%;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(0) translateX(-50%);
+    transition: $animation-primary;
+  }
+}
+
+/*--- Burger Menu---*/
+
+.burger-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,50 +118,53 @@
   background-color: $color-tertiary;
   cursor: pointer;
   z-index: 2;
+  transform: scale(0);
 
   &:hover {
     background-color: $color-tertiary-dark;
   }
-}
-.burgerButtonActive {
-  background-color: $color-tertiary-dark;
 
-  &:hover {
-    background-color: $color-tertiary;
-  }
-}
+  &--active {
+    background-color: $color-tertiary-dark;
+    transform: scale(1);
 
-.icon {
-  width: 100%;
-  &::after,
-  &::before {
-    content: "";
-    display: block;
-    height: 1px;
-    width: 40%;
-    margin: auto;
-    background-color: $color-text-light;
-    position: relative;
-    transition: transform 0.3s;
+    &:hover {
+      background-color: $color-tertiary;
+    }
   }
 
-  &::after {
-    top: -5px;
-  }
+  &__icon {
+    width: 100%;
+    &::after,
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 40%;
+      margin: auto;
+      background-color: $color-text-light;
+      position: relative;
+      transition: transform 0.3s;
+    }
 
-  &::before {
-    top: 5px;
-  }
-}
+    &::after {
+      top: -5px;
+    }
 
-.iconActive {
-  &::after {
-    transform: rotate(45deg);
-    top: -1px;
-  }
+    &::before {
+      top: 5px;
+    }
 
-  &::before {
-    transform: rotate(-45deg);
-    top: 0px;
+    &--active {
+      &::after {
+        transform: rotate(45deg);
+        top: -1px;
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+        top: 0px;
+      }
+    }
   }
 }

@@ -35,7 +35,7 @@ $breakpoints: (
 
 /*----- Animation variables-----*/
 // for controlling the duration and easing of animations
-$animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+$animation-primary: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 $animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
 $animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
 $animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
@@ -44,3 +44,14 @@ $animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 $section-padding: clamp(5em, 21vh, 12em);
 $container-padding: clamp(2.5em, 8vw, 8em);
 $gap-padding: clamp(1.5em, 4vw, 2.5em);
+
+/*----- Display Flex variables-----*/
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
