@@ -11,35 +11,37 @@ export default function Home() {
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.logo}>
-          <span className={styles.copyright}>©</span>
-          <div className={styles.name}>
-            <p className={styles.codeBy}>Code by</p>
-            <p className={styles.fname}>Wenting</p>
-            <p className={styles.lname}>Yong</p>
+        <div className={styles.header__logo}>
+          <span className={styles.header__copyright}>©</span>
+          <div className={styles.header__name}>
+            <p className={styles.header__codeBy}>Code by</p>
+            <p className={styles.header__fname}>Wenting</p>
+            <p className={styles.header__lname}>Yong</p>
           </div>
         </div>
-        <ul className={styles.nav}>
-          {navItems.map((item, index) => {
-            return (
-              <li key={index} className={styles.item}>
-                <a href={item.href}>{item.title}</a>
-                <span className={styles.indicator} />
-              </li>
-            );
-          })}
+        <ul className={styles.header__nav}>
+          {navItems.map((item, index) => (
+            <li key={index} className={styles.header__item}>
+              <a href={item.href} className={styles.header__link}>
+                {item.title}
+              </a>
+              <span className={styles.header__indicator} />
+            </li>
+          ))}
         </ul>
       </div>
       <div
         onClick={() => {
           setIsActive(!isActive);
         }}
-        className={clsx(styles.burgerButton, {
-          [styles.burgerButtonActive]: isActive,
+        className={clsx(styles["burger-button"], {
+          [styles["burger-button--active"]]: isActive,
         })}
       >
         <div
-          className={clsx(styles.icon, { [styles.iconActive]: isActive })}
+          className={clsx(styles["burger-button__icon"], {
+            [styles["burger-button__icon--active"]]: isActive,
+          })}
         ></div>
       </div>
       <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
