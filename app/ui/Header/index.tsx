@@ -17,8 +17,8 @@ export default function Home() {
           <span className={styles.header__copyright}>©</span>
           <div className={styles.header__name}>
             <span className={styles.header__codeBy}>Code by</span>
-            <span className={styles.header__fname}>Wenting</span>
-            <span className={styles.header__lname}>Yong</span>
+            <span className={styles.header__fn}>Wenting</span>
+            <span className={styles.header__ln}>Yong</span>
           </div>
         </Link>
 

@@ -2,34 +2,63 @@
 .header {
   @include flex-center;
   justify-content: space-between;
-  position: absolute;
-  padding: calc(var(--gap-padding) / 1.2);
+
+  padding: calc(var(--gap-padding) / 2);
   position: fixed;
   width: 100%;
   z-index: 1;
   background-color: transparent;
   color: $color-text-light;
-  font-size: 1em;
 
   // Header - Left Logo
   &__logo {
     @include flex-center;
     cursor: pointer;
-    span {
-      transition: $animation-primary;
+
+    &:hover {
+      .header__copyright {
+        transform: rotate(360deg);
+      }
+      .header__name {
+        padding-right: clamp(0.5em, 2vw, 1em);
+      }
+      .header__codeBy {
+        transform: translateX(-100%);
+      }
+      .header__fn,
+      .header__ln {
+        transform: translateX(-4em);
+        padding-left: 0;
+      }
     }
+  }
+
+  &__copyright {
+    transition: $animation-primary;
+    font-size: 1.2em;
+    margin-right: 0.2em;
   }
 
   &__name {
     @include flex-center;
-    position: relative;
     transition: $animation-primary;
+    position: relative;
     overflow: hidden;
     white-space: nowrap;
+
     span {
-      margin-left: 0.3em;
+      transition: $animation-primary;
+      &:nth-of-type(2) {
+        padding-left: 0.3em;
+      }
+      &:nth-of-type(3) {
+        position: absolute;
+        left: 8.25em;
+        padding-left: 0.3em;
+      }
     }
   }
+
   // Header - Right Navigation
   &__nav {
     @include flex-center;
