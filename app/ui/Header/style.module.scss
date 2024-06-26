@@ -2,9 +2,8 @@
 .header {
   @include flex-center;
   justify-content: space-between;
-
   padding: calc(var(--gap-padding) / 2);
-  position: fixed;
+  position: absolute;
   width: 100%;
   z-index: 1;
   background-color: transparent;
@@ -102,6 +101,7 @@
   background-color: $color-tertiary;
   cursor: pointer;
   z-index: 2;
+  transform: scale(0);
 
   &:hover {
     background-color: $color-tertiary-dark;

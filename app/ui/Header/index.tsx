@@ -1,15 +1,42 @@
 "use client";
 import styles from "./style.module.scss";
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
 import Link from "next/link";
 import { navItems } from "@/app/common/data";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
+  const burger = useRef(null);
 
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(burger.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: 200,
+        onLeave: () => {
+          gsap.to(burger.current, {
+            scale: 1,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(burger.current, {
+            scale: 0,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+      },
+    });
+  }, []);
   return (
     <>
       <div className={styles.header}>
@@ -39,6 +66,7 @@ export default function Home() {
         </div>
       </div>
       <div
+        ref={burger}
         onClick={() => {
           setIsActive(!isActive);
         }}
