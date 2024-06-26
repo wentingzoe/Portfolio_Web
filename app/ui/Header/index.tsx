@@ -4,31 +4,39 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
+import Link from "next/link";
 import { navItems } from "@/app/common/data";
+
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
 
   return (
     <>
       <div className={styles.header}>
-        <div className={styles.header__logo}>
+        <Link href="/" className={styles.header__logo}>
           <span className={styles.header__copyright}>©</span>
           <div className={styles.header__name}>
-            <p className={styles.header__codeBy}>Code by</p>
-            <p className={styles.header__fname}>Wenting</p>
-            <p className={styles.header__lname}>Yong</p>
+            <span className={styles.header__codeBy}>Code by</span>
+            <span className={styles.header__fname}>Wenting</span>
+            <span className={styles.header__lname}>Yong</span>
           </div>
+        </Link>
+
+        <div className={styles.header__nav}>
+          {navItems.map(
+            (item, index) =>
+              index > 0 && (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className={styles.header__item}
+                >
+                  <span>{item.title}</span>
+                  <span className={styles.header__indicator} />
+                </Link>
+              )
+          )}
         </div>
-        <ul className={styles.header__nav}>
-          {navItems.map((item, index) => (
-            <li key={index} className={styles.header__item}>
-              <a href={item.href} className={styles.header__link}>
-                {item.title}
-              </a>
-              <span className={styles.header__indicator} />
-            </li>
-          ))}
-        </ul>
       </div>
       <div
         onClick={() => {

@@ -1,33 +1,65 @@
-// Header
+/*--- Header ---*/
 .header {
   @include flex-center;
   justify-content: space-between;
-  padding: var(--gap-padding);
+  position: absolute;
+  padding: calc(var(--gap-padding) / 1.2);
   position: fixed;
   width: 100%;
   z-index: 1;
   background-color: transparent;
-  color: $color-text-dark;
+  color: $color-text-light;
+  font-size: 1em;
 
+  // Header - Left Logo
   &__logo {
     @include flex-center;
+    cursor: pointer;
+    span {
+      transition: $animation-primary;
+    }
   }
 
   &__name {
     @include flex-center;
     position: relative;
+    transition: $animation-primary;
+    overflow: hidden;
+    white-space: nowrap;
+    span {
+      margin-left: 0.3em;
+    }
   }
-
+  // Header - Right Navigation
   &__nav {
     @include flex-center;
+    margin: 0;
   }
 
+  &__item {
+    @include flex-center;
+    position: relative;
+    cursor: pointer;
+    margin-right: 1.5em;
+
+    &:hover .header__indicator {
+      transform: scale(1.5);
+    }
+  }
   &__indicator {
-    // Styles for the indicator
+    position: absolute;
+    width: 0.35em;
+    height: 0.35em;
+    top: 2em;
+    left: 50%;
+    background-color: white;
+    border-radius: 50%;
+    transform: scale(0) translateX(-50%);
+    transition: $animation-primary;
   }
 }
 
-// Burger Menu
+/*--- Burger Menu---*/
 .burger-button {
   display: flex;
   align-items: center;
