@@ -90,25 +90,7 @@ export default function Home() {
         ></div>
       </div>
       <AnimatePresence mode="wait">
-        {isActive && (
-          <>
-            <motion.div
-              className={styles.overlay}
-              onClick={closeMenu}
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: 0.4,
-                transition: { duration: 0.5, delay: 0.4, ease: "easeIn" },
-              }}
-              exit={{
-                opacity: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
-              }}
-            />
-
-            <Nav />
-          </>
-        )}
+        {isActive && <Nav onClose={closeMenu} />}
       </AnimatePresence>
     </>
   );
