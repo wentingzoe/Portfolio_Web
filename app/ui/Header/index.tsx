@@ -1,7 +1,7 @@
 "use client";
 import styles from "./style.module.scss";
 import { useLayoutEffect, useRef, useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
 import Link from "next/link";
@@ -12,6 +12,9 @@ import { ScrollTrigger } from "gsap/all";
 export default function Home() {
   const [isActive, setIsActive] = useState(false);
   const burger = useRef(null);
+
+  const toggleMenu = () => setIsActive(!isActive);
+  const closeMenu = () => setIsActive(false);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -50,12 +53,7 @@ export default function Home() {
         </Link>
 
         <div className={styles.header__nav}>
-          <div
-            className={styles["header__nav--small"]}
-            onClick={() => {
-              setIsActive(!isActive);
-            }}
-          >
+          <div className={styles["header__nav--small"]} onClick={toggleMenu}>
             <div className={styles.header__item}>
               <span>Menu</span>
               <span className={styles.header__indicator} />
@@ -80,9 +78,7 @@ export default function Home() {
       </div>
       <div
         ref={burger}
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
+        onClick={toggleMenu}
         className={clsx(styles["burger-button"], {
           [styles["burger-button--active"]]: isActive,
         })}
@@ -93,7 +89,27 @@ export default function Home() {
           })}
         ></div>
       </div>
-      <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isActive && (
+          <>
+            <motion.div
+              className={styles.overlay}
+              onClick={closeMenu}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 0.4,
+                transition: { duration: 0.5, delay: 0.4, ease: "easeIn" },
+              }}
+              exit={{
+                opacity: 0,
+                transition: { duration: 0.5, ease: "easeOut" },
+              }}
+            />
+
+            <Nav />
+          </>
+        )}
+      </AnimatePresence>
     </>
   );
 }

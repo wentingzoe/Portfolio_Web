@@ -117,7 +117,7 @@
   border-radius: 50%;
   background-color: $color-tertiary;
   cursor: pointer;
-  z-index: 2;
+  z-index: 1001;
   transform: scale(0);
 
   &:hover {
@@ -167,4 +167,20 @@
       }
     }
   }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to right,
+    hsla(220, 13%, 0%, 0.3) 40%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  will-change: opacity;
+  z-index: 999;
+  pointer-events: all;
 }
