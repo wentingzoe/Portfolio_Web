@@ -1,6 +1,6 @@
 "use client";
 import styles from "./style.module.scss";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
