@@ -126,7 +126,7 @@
 
   &--active {
     background-color: $color-tertiary-dark;
-    transform: scale(1);
+    transform: scale(1) !important;
 
     &:hover {
       background-color: $color-tertiary;

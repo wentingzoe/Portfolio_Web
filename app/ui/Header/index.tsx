@@ -6,10 +6,9 @@ import Nav from "./Nav";
 import clsx from "clsx";
 import Link from "next/link";
 import { navItems } from "@/app/common/data";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { gsap, ScrollTrigger } from "gsap/all";
 
-export default function Home() {
+export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const burger = useRef(null);
 
