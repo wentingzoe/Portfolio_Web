@@ -1,17 +1,19 @@
 "use client";
 import styles from "./style.module.scss";
-import { useLayoutEffect, useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
 import Link from "next/link";
 import { navItems } from "@/app/common/data";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/all";
+import { gsap, ScrollTrigger } from "gsap/all";
 
-export default function Home() {
+export default function Header() {
   const [isActive, setIsActive] = useState(false);
   const burger = useRef(null);
+
+  const toggleMenu = () => setIsActive(!isActive);
+  const closeMenu = () => setIsActive(false);
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -50,12 +52,7 @@ export default function Home() {
         </Link>
 
         <div className={styles.header__nav}>
-          <div
-            className={styles["header__nav--small"]}
-            onClick={() => {
-              setIsActive(!isActive);
-            }}
-          >
+          <div className={styles["header__nav--small"]} onClick={toggleMenu}>
             <div className={styles.header__item}>
               <span>Menu</span>
               <span className={styles.header__indicator} />
@@ -80,9 +77,7 @@ export default function Home() {
       </div>
       <div
         ref={burger}
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
+        onClick={toggleMenu}
         className={clsx(styles["burger-button"], {
           [styles["burger-button--active"]]: isActive,
         })}
@@ -93,7 +88,9 @@ export default function Home() {
           })}
         ></div>
       </div>
-      <AnimatePresence mode="wait">{isActive && <Nav />}</AnimatePresence>
+      <AnimatePresence mode="wait">
+        {isActive && <Nav onClose={closeMenu} />}
+      </AnimatePresence>
     </>
   );
 }
