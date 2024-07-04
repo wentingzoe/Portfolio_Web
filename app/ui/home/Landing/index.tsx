@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <main className={styles.landing}>
+    <section className={styles.landing}>
       <div className={styles["landing__image-container"]}>
         <Image
           className={`${styles.landing__background} ${styles["landing__background--mobile"]}`}
@@ -62,6 +62,6 @@ export default function Home() {
           <p ref={secondText}>UI Developer & Designer -</p>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
