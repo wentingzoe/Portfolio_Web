@@ -38,12 +38,12 @@
   &__stripe {
     @include stripe;
     background-color: $color-border-light;
-    margin-bottom: 2em;
   }
 
   &__list {
-    gap: 0.4rem;
+    margin-top: 2em;
   }
+
   &__back {
     @include overlay;
     @include fixed-nav-back;
