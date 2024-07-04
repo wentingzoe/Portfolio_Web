@@ -42,22 +42,22 @@ export default function Home() {
 
   return (
     <main className={styles.landing}>
-      <div className={styles.imageContainer}>
+      <div className={styles["landing__image-container"]}>
         <Image
-          className={`${styles.background} ${styles.mobile}`}
+          className={`${styles.landing__background} ${styles["landing__background--mobile"]}`}
           src="/images/background_mobile.png"
           alt="background mobile"
           fill={true}
         />
         <Image
-          className={`${styles.background} ${styles.desktop}`}
+          className={`${styles.landing__background} ${styles["landing__background--desktop"]}`}
           src="/images/background.png"
           alt="background"
           fill={true}
         />
       </div>
-      <div className={styles.sliderContainer}>
-        <div ref={slider} className={styles.slider}>
+      <div className={styles["landing__slider-container"]}>
+        <div ref={slider} className={styles.landing__slider}>
           <p ref={firstText}>UI Developer & Designer -</p>
           <p ref={secondText}>UI Developer & Designer -</p>
         </div>
