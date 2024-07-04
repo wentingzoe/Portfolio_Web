@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Nav from "./Nav";
 import clsx from "clsx";
 import Link from "next/link";
-import { navItems } from "@/app/common/data";
+import { navItems } from "@/app/lib/data";
 import { gsap, ScrollTrigger } from "gsap/all";
 
 export default function Header() {

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import styles from "./style.module.scss";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { navLinkSlide, navLinkScale } from "@/app/common/animations";
+import { navLinkSlide, navLinkScale } from "@/app/lib/animations";
 import clsx from "clsx";
 
 export default function NavLink({

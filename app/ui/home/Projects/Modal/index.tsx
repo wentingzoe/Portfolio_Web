@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import gsap from "gsap";
-import { modalScale } from "@/app/common/animations";
+import { modalScale } from "@/app/lib/animations";
 
 export default function Modal({
   projects,
