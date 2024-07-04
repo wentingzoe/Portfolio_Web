@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
-import styles from "@/app/page.module.scss";
-import Landing from "@/app/ui/Landing";
-import Projects from "@/app/ui/Projects";
+import styles from "@/app/home.module.scss";
+import Landing from "@/app/ui/home/Landing";
+import Projects from "@/app/ui/home/Projects";
 
 export default function Home() {
   useEffect(() => {
