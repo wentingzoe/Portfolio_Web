@@ -11,39 +11,40 @@ export default function Nav({ onClose }: { onClose: () => void }) {
   return (
     <>
       <motion.div
-        className={styles.overlay}
-        onClick={onClose}
-        variants={bgFade}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-      />
-      <motion.div
         variants={menuSlide}
         initial="initial"
         animate="enter"
         exit="exit"
         className={styles.nav}
       >
-        <div className={styles.inner}>
-          <div className={styles.row}>
-            <div className={styles.header}>
-              <h5>Navigation</h5>
-            </div>
-            {navItems.map((item, index) => {
-              return (
-                <NavLink
-                  key={index}
-                  data={{ ...item, index }}
-                  onClose={onClose}
-                />
-              );
-            })}
+        <div className={styles.nav__inner}>
+          <div className={styles.nav__top}>
+            <h5>Navigation</h5>
+            <div className={styles.nav__stripe} />
+            <ul className={styles.nav__list}>
+              {navItems.map((item, index) => {
+                return (
+                  <NavLink
+                    key={index}
+                    data={{ ...item, index }}
+                    onClose={onClose}
+                  />
+                );
+              })}
+            </ul>
           </div>
           <Social />
         </div>
         <Curve />
       </motion.div>
+      <motion.div
+        className={styles.nav__back}
+        onClick={onClose}
+        variants={bgFade}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+      />
     </>
   );
 }
