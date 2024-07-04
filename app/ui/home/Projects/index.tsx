@@ -19,14 +19,14 @@ export default function Index() {
         <p className={styles.projects__header}> Recent Work</p>
         {projects.map((project, index) => {
           return (
-            <div className={styles.projects__line} key={index}>
+            <ul className={styles.projects__line} key={index}>
               <Project
                 index={index}
                 title={project.title}
                 role={project.role}
                 setModal={setModal}
               />
-            </div>
+            </ul>
           );
         })}
       </div>
