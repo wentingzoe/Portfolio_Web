@@ -7,7 +7,7 @@
   background-color: $color-primary-dark;
   z-index: 1000;
 
-  .inner {
+  &__inner {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -22,39 +22,30 @@
     @include respond-to("large") {
       padding: 10vh 6vw;
     }
-
-    .row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-top: 1rem;
-
-      .header {
-        opacity: 0.5;
-        border-bottom: 1px solid $color-secondary;
-        margin-bottom: 2rem;
-
-        h5 {
-          margin-block-start: 1.67em;
-          margin-block-end: 1.67em;
-        }
-      }
-    }
   }
-}
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(
-    to right,
-    hsla(220, 13%, 0%, 0.3) 40%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  will-change: opacity;
-  z-index: 999;
-  pointer-events: all;
+  &__top {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+  h5 {
+    opacity: 0.5;
+    margin-block-start: 1.67em;
+    margin-block-end: 1.67em;
+  }
+
+  &__stripe {
+    @include stripe;
+    background-color: $color-border-light;
+  }
+
+  &__list {
+    margin-top: 2em;
+  }
+
+  &__back {
+    @include overlay;
+    @include fixed-nav-back;
+  }
 }

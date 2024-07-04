@@ -41,7 +41,7 @@ export default function Header() {
   }, []);
   return (
     <>
-      <div className={styles.header}>
+      <header className={styles.header}>
         <Link href="/" className={styles.header__logo}>
           <span className={styles.header__copyright}>©</span>
           <div className={styles.header__name}>
@@ -51,7 +51,7 @@ export default function Header() {
           </div>
         </Link>
 
-        <div className={styles.header__nav}>
+        <nav className={styles.header__nav}>
           <div className={styles["header__nav--small"]} onClick={toggleMenu}>
             <div className={styles.header__item}>
               <span>Menu</span>
@@ -73,8 +73,8 @@ export default function Header() {
                 )
             )}
           </div>
-        </div>
-      </div>
+        </nav>
+      </header>
       <div
         ref={burger}
         onClick={toggleMenu}

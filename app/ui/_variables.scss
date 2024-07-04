@@ -2,8 +2,6 @@
 $color-primary: #bb6b5c;
 $color-secondary: #d3c7c0;
 $color-tertiary: #a6c0d6;
-$color-text-light: #ffffff;
-$color-text-dark: #1c1d20;
 
 $color-primary-light: lighten($color-primary, 15%);
 $color-primary-dark: darken($color-primary, 15%);
@@ -12,6 +10,13 @@ $color-secondary-dark: darken($color-secondary, 15%);
 $color-tertiary-light: lighten($color-tertiary, 15%);
 $color-tertiary-dark: darken($color-tertiary, 15%);
 
+$color-border: rgba(28, 29, 32, 0.175);
+$color-border-solid: #d2d2d2;
+$color-border-light: rgba(255, 255, 255, 0.2);
+$color-border-solid-light: #545557;
+
+$color-text-light: #ffffff;
+$color-text-dark: #1c1d20;
 /* -----Define breakpoints----- */
 $breakpoints: (
   "small": 540px,
@@ -54,4 +59,31 @@ $gap-padding: clamp(1.5em, 4vw, 2.5em);
 @mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+/*-------------Common Element -------------*/
+@mixin stripe {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $color-border;
+}
+
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fixed-nav-back {
+  position: fixed;
+  background: linear-gradient(
+    to right,
+    hsla(220, 13%, 0%, 0.3) 40%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  z-index: 999;
+  pointer-events: all;
 }

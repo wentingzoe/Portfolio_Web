@@ -61,19 +61,22 @@ export default function Modal({
         variants={modalScale}
         initial="initial"
         animate={active ? "enter" : "closed"}
-        className={styles.container}
+        className={styles.modal}
       >
-        <div style={{ top: index * -100 + "%" }} className={styles.slider}>
+        <div
+          style={{ top: index * -100 + "%" }}
+          className={styles.modal__slider}
+        >
           {projects.map((project: any, index: any) => {
             const { src, color, title } = project;
             return (
               <div
                 key={`modal_${index}`}
                 style={{ backgroundColor: color }}
-                className={styles.modal}
+                className={styles.modal__box}
               >
                 <Image
-                  className={styles.image}
+                  className={styles.modal__image}
                   src={`/images/${src}`}
                   alt={title}
                   width={300}
@@ -89,14 +92,14 @@ export default function Modal({
         variants={modalScale}
         initial="initial"
         animate={active ? "enter" : "closed"}
-        className={styles.cursor}
+        className={styles.modal__cursor}
       ></motion.div>
       <motion.div
         ref={cursorLabel}
         variants={modalScale}
         initial="initial"
         animate={active ? "enter" : "closed"}
-        className={styles.cursorLabel}
+        className={styles.modal__cursorLabel}
       >
         <p>View</p>
       </motion.div>
