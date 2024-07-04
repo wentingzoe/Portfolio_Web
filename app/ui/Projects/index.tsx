@@ -3,7 +3,7 @@ import styles from "./style.module.scss";
 import { useState } from "react";
 import Project from "./Project";
 import Modal from "./Modal";
-import { projects } from "@/app/common/data";
+import { projects } from "@/app/lib/data";
 
 export default function Index() {
   const [modal, setModal] = useState({ active: false, index: 0 });

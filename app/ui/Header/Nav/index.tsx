@@ -3,9 +3,9 @@ import styles from "./style.module.scss";
 import NavLink from "./NavLink";
 import Social from "./Social";
 import Curve from "./Curve";
-import { bgFade, menuSlide } from "@/app/common/animations";
+import { bgFade, menuSlide } from "@/app/lib/animations";
 import { motion } from "framer-motion";
-import { navItems } from "@/app/common/data";
+import { navItems } from "@/app/lib/data";
 
 export default function Nav({ onClose }: { onClose: () => void }) {
   return (
