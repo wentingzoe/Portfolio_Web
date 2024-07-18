@@ -1,3 +1,49 @@
+/* ------------------------- Fonts -------------------------------------------------- */
+@font-face {
+  font-family: "CF-custome";
+  src: url("fonts/CreativeFusion-custome1.otf") format("opentype"),
+    url("fonts/CreativeFusion-custome1.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "CF-inline";
+  src: url("fonts/CreativeFusion-custome1inline.otf") format("opentype"),
+    url("fonts/CreativeFusion-custome1inline.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "CF-regular";
+  src: url("fonts/CreativeFusion-Regular.otf") format("opentype"),
+    url("fonts/CreativeFusion-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "MT-light";
+  src: url("fonts/MONTECHV02-Light.otf") format("opentype"),
+    url("fonts/MONTECHV02-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: "MT-regular";
+  src: url("fonts/MONTECHV02-Regular.otf") format("opentype"),
+    url("fonts/MONTECHV02-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+}
+
 :root {
   --section-padding: clamp(5em, 21vh, 12em);
   --container-padding: clamp(2.5em, 8vw, 8em);
@@ -28,7 +74,6 @@
 *:after,
 *:before {
   -webkit-box-sizing: border-box;
-
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -88,7 +133,7 @@ strong:last-child {
   margin-bottom: 0;
 }
 h1 {
-  font-family: "", sans-serif;
+  font-family: "CF-custome", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(3.25em, 7vw, 8em);
@@ -97,7 +142,7 @@ h1 {
   margin-bottom: 1em;
 }
 h2 {
-  font-family: "", sans-serif;
+  font-family: "CF-regular", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(2.66em, 4.65vw, 5.32em);
@@ -106,7 +151,7 @@ h2 {
 }
 
 h3 {
-  font-family: "", sans-serif;
+  font-family: "CF-regular", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: calc(clamp(3.25em, 5vw, 4.5em) * 0.75);
@@ -115,7 +160,7 @@ h3 {
 }
 
 h4 {
-  font-family: "", sans-serif;
+  font-family: "CF-inline", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(1.55em, 2.3vw, 2.5em);
@@ -124,7 +169,7 @@ h4 {
 }
 
 h5 {
-  font-family: "", sans-serif;
+  font-family: "CF-inline", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: 0.6em;
@@ -135,8 +180,9 @@ h5 {
   opacity: 0.5;
 }
 
-p {
-  font-family: "", sans-serif;
+p,
+span {
+  font-family: "MT-light", sans-serif;
   font-weight: 450;
   font-style: normal;
   color: $color-text-light;
