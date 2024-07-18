@@ -45,23 +45,23 @@ export default function Home() {
       <div className={styles["landing__image-container"]}>
         <Image
           className={`${styles.landing__background} ${styles["landing__background--mobile"]}`}
-          src="/images/background_mobile.png"
+          src="/images/landing_line_small.svg"
           alt="background mobile"
           fill={true}
         />
         <Image
           className={`${styles.landing__background} ${styles["landing__background--desktop"]}`}
-          src="/images/background.png"
+          src="/images/landing_line_large.svg"
           alt="background"
           fill={true}
         />
       </div>
-      <div className={styles["landing__slider-container"]}>
+      {/* <div className={styles["landing__slider-container"]}>
         <div ref={slider} className={styles.landing__slider}>
           <p ref={firstText}>UI Developer & Designer -</p>
           <p ref={secondText}>UI Developer & Designer -</p>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }
