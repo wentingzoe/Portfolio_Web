@@ -18,7 +18,6 @@ $breakpoints: (
     @warn "Unknown breakpoint: #{$breakpoint}.";
   }
 }
-
 /* ----------------  Display Flex variables ---------------- */
 @mixin flex-center {
   display: flex;
