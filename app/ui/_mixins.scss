@@ -1,0 +1,58 @@
+/* ----------------  Define breakpoints ---------------- */
+$breakpoints: (
+  "small": 540px,
+  // Mobile devices
+  "medium": 720px,
+  // Tablets
+  "large": 1200px,
+  // Small desktops
+);
+
+/** ----  for responsive design ---- **/
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint: #{$breakpoint}.";
+  }
+}
+
+/* ----------------  Display Flex variables ---------------- */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ----------------  Common Element ---------------- */
+@mixin stripe {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $color-border;
+}
+
+@mixin overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+@mixin fixed-nav-back {
+  position: fixed;
+  background: linear-gradient(
+    to right,
+    hsla(220, 13%, 0%, 0.3) 40%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  z-index: 999;
+  pointer-events: all;
+}

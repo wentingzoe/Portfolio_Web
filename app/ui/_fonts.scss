@@ -1,0 +1,17 @@
+/* ---------------- Fonts Size ---------------- */
+$base-font-size: 16px;
+
+/** ---- Fluid typography ---- **/
+@function fluid-size($min-size, $max-size, $min-vw, $max-vw) {
+  $min-size-rem: $min-size / $base-font-size * 1rem;
+  $max-size-rem: $max-size / $base-font-size * 1rem;
+
+  @return clamp(
+    #{$min-size-rem},
+    calc(
+      #{$min-size-rem} + (#{($max-size - $min-size) / $base-font-size * 1rem} *
+            ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw})))
+    ),
+    #{$max-size-rem}
+  );
+}

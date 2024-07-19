@@ -1,4 +1,4 @@
-/* -----Color Variables----- */
+/* ---------------- Color Variables ---------------- */
 $color-primary: #000000;
 $color-secondary: #f28705;
 $color-tertiary: #f25c05;
@@ -16,73 +16,15 @@ $color-border-light: rgba(242, 240, 228, 0.5);
 
 $color-text-light: #ffffff;
 $color-text-dark: #1c1d20;
-/* -----Define breakpoints----- */
-$breakpoints: (
-  "small": 540px,
-  // Mobile devices
-  "medium": 720px,
-  // Tablets
-  "large": 1200px,
-  // Small desktops
-);
 
-/* -----Mixin for responsive design----- */
-@mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  } @else {
-    @warn "Unknown breakpoint: #{$breakpoint}.";
-  }
-}
-
-/*----- Animation variables-----*/
+/* ---------------- Animation variables ---------------- */
 // for controlling the duration and easing of animations
 $animation-primary: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 $animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
 $animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
 $animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
-/*----- Container Padding variables-----*/
+/* ---------------- Container Padding variables ---------------- */
 $section-padding: clamp(5em, 21vh, 12em);
 $container-padding: clamp(2.5em, 8vw, 8em);
 $gap-padding: clamp(1.5em, 4vw, 2.5em);
-
-/*----- Display Flex variables-----*/
-@mixin flex-center {
-  display: flex;
-  align-items: center;
-}
-
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-/*-------------Common Element -------------*/
-@mixin stripe {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background-color: $color-border;
-}
-
-@mixin overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-
-@mixin fixed-nav-back {
-  position: fixed;
-  background: linear-gradient(
-    to right,
-    hsla(220, 13%, 0%, 0.3) 40%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  z-index: 999;
-  pointer-events: all;
-}
