@@ -42,26 +42,24 @@ export default function Home() {
 
   return (
     <section className={styles.landing}>
-      <div className={styles["landing__image-container"]}>
+      <div className={styles["landing__container"]}>
+        <div className="landing__name">
+          <h1>Wenting</h1>
+          <h1>Yong</h1>
+        </div>
         <Image
-          className={`${styles.landing__background} ${styles["landing__background--mobile"]}`}
+          className={`${styles.landing__line} ${styles["landing__line--mobile"]}`}
           src="/images/landing_line_small.svg"
-          alt="background mobile"
+          alt="line mobile"
           fill={true}
         />
         <Image
-          className={`${styles.landing__background} ${styles["landing__background--desktop"]}`}
-          src="/images/landing_line_large.svg"
-          alt="background"
+          className={`${styles.landing__line} ${styles["landing__line--desktop"]}`}
+          src="/images/landing_line_only.svg"
+          alt="line"
           fill={true}
         />
       </div>
-      {/* <div className={styles["landing__slider-container"]}>
-        <div ref={slider} className={styles.landing__slider}>
-          <p ref={firstText}>UI Developer & Designer -</p>
-          <p ref={secondText}>UI Developer & Designer -</p>
-        </div>
-      </div> */}
     </section>
   );
 }

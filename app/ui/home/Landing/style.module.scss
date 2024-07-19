@@ -4,38 +4,24 @@
   height: 100vh;
   overflow: hidden;
 
-  &__image-container {
+  &__container {
     position: relative;
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    margin-top: clamp(30px, 10vw, 60px);
-
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   bottom: 0;
-    //   left: 0;
-    //   width: 100%;
-    //   height: 50%;
-    //   background: linear-gradient(
-    //     to bottom,
-    //     transparent 0%,
-    //     $color-primary 100%
-    //   );
-    //   pointer-events: none;
-    // }
+  }
+  &__name {
+    display: flex;
+    flex-direction: column;
   }
 
-  &__background {
-    position: relative;
-    object-fit: cover;
-    // object-position: center;
+  &__line {
+    position: absolute;
     max-width: 100%;
-    height: 100%;
+    //object-fit: cover;
 
     &--mobile {
       display: block;
+      aspect-ratio: 9/16;
     }
 
     &--desktop {
@@ -48,30 +34,7 @@
       }
       &--desktop {
         display: block;
-      }
-    }
-  }
-
-  &__slider-container {
-    position: absolute;
-    bottom: 1rem;
-  }
-
-  &__slider {
-    position: relative;
-    white-space: nowrap;
-
-    p {
-      position: relative;
-      margin: 0;
-      font-size: 10rem;
-      font-weight: 500;
-      padding-right: 50px;
-
-      &:nth-of-type(2) {
-        position: absolute;
-        left: 100%;
-        top: 0;
+        aspect-ratio: 16/9;
       }
     }
   }
