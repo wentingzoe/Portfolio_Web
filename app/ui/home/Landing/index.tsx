@@ -43,10 +43,15 @@ export default function Home() {
   return (
     <section className={styles.landing}>
       <div className={styles["landing__container"]}>
-        <div className="landing__name">
+        <div className={styles.landing__name}>
           <h1>Wenting</h1>
           <h1>Yong</h1>
         </div>
+        <div className={styles.landing__title}>
+          <h2>is a</h2>
+          <h2>Developer</h2>
+        </div>
+        {/* <div className={styles.landing__curve}> */}
         <Image
           className={`${styles.landing__line} ${styles["landing__line--mobile"]}`}
           src="/images/landing_line_small.svg"
@@ -55,10 +60,11 @@ export default function Home() {
         />
         <Image
           className={`${styles.landing__line} ${styles["landing__line--desktop"]}`}
-          src="/images/landing_line_only.svg"
+          src="/images/landing_line_only2.svg"
           alt="line"
           fill={true}
         />
+        {/* </div> */}
       </div>
     </section>
   );

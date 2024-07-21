@@ -50,7 +50,7 @@ body {
   color: $color-text-light;
   background-color: $color-primary;
   font-size: $base-font-size;
-  font-size: fluid-size(14px, 18px, 20vw, 120vw);
+  font-size: clamp(16px, 1.2vw, 19px);
 }
 
 /* Typography */
