@@ -4,7 +4,7 @@ $base-font-size: 16px;
 /* ---------------- Color Variables ---------------- */
 $color-primary: #000000;
 $color-secondary: #f28705;
-$color-tertiary: #f25c05;
+$color-tertiary: #d74a2e;
 
 $color-primary-light: lighten($color-primary, 15%);
 $color-primary-dark: darken($color-primary, 15%);
@@ -12,6 +12,10 @@ $color-secondary-light: lighten($color-secondary, 15%);
 $color-secondary-dark: darken($color-secondary, 15%);
 $color-tertiary-light: lighten($color-tertiary, 15%);
 $color-tertiary-dark: darken($color-tertiary, 15%);
+
+$gradient-90deg: linear-gradient(90deg, $color-secondary, $color-tertiary);
+$gradient-45deg: linear-gradient(45deg, $color-secondary, $color-tertiary);
+$gradient-180deg: linear-gradient(180deg, $color-secondary, $color-tertiary);
 
 $color-border: rgba(242, 240, 228, 0.5);
 $color-border-solid: #f2f0e4;
@@ -29,5 +33,11 @@ $animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
 
 /* ---------------- Container Padding variables ---------------- */
 $section-padding: clamp(5em, 21vh, 12em);
-$container-padding: clamp(2.5em, 8vw, 8em);
+$container-padding: clamp(1em, 5vw, 5em);
 $gap-padding: clamp(1.5em, 4vw, 2.5em);
+
+/* ---------------- Grid variables ---------------- */
+$grid-size: calc(90vw / 8);
+
+/* ---------------- Elements ---------------- */
+$border-primary: 1px solid $color-secondary;
