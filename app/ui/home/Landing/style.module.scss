@@ -1,151 +1,30 @@
 .landing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  @include flex-all-center;
+  position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
 
   &__container {
     position: relative;
+    max-width: 90vw;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(8, $grid-size);
+    grid-template-rows: repeat(4, $grid-size);
 
-    width: 100%;
-    height: 100%;
+    border: $border-primary;
+    grid-auto-flow: dense;
+    box-sizing: border-box;
   }
+}
 
-  &__name,
-  &__title {
-    position: absolute;
-    color: $color-text-light;
-  }
+.grid {
+  @include flex-all-center;
+  border: $border-primary;
+  background-color: $color-primary;
+  width: 100%;
+  height: 100%;
 
-  &__name {
-    align-content: flex-start;
-    top: 45%;
-    left: 35%;
-    transform: translate(-50%, -50%) rotate(-90deg);
-    transform-origin: center;
-    white-space: nowrap;
-    z-index: 2;
-    border: 1px solid red;
-
-    @include respond-to("small") {
-      color: powderblue;
-    }
-
-    @include respond-to("medium") {
-      top: 25%;
-      left: 0;
-      right: 0;
-      transform: translate(0, 0) rotate(0deg);
-      white-space: normal;
-      color: pink;
-    }
-
-    @include respond-to("large") {
-      top: 25%;
-      left: 12.5%;
-
-      color: greenyellow;
-    }
-
-    h1 {
-      font-size: max(6em, 17.5vw);
-      margin: 0;
-      line-height: 0.8;
-
-      @include respond-to("medium") {
-        font-size: max(8em, 13vw);
-      }
-    }
-  }
-
-  &__title {
-    display: none;
-
-    @include respond-to("medium") {
-      display: block;
-      bottom: 9%;
-      left: 12.5%;
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      border: 1px solid blue;
-
-      h2 {
-        font-size: 103.5px;
-        margin: 0;
-        line-height: 1;
-
-        &:first-child {
-          padding-right: 1rem;
-        }
-
-        &:last-child {
-        }
-      }
-    }
-  }
-
-  // &__curve {
-  //   position: relative;
-  //   width: 100%;
-  //   aspect-ratio: 9/16;
-
-  //   @include respond-to("small") {
-  //     aspect-ratio: 3/2;
-  //   }
-
-  //   @include respond-to("medium") {
-  //     aspect-ratio: 4/3;
-  //   }
-
-  //   @include respond-to("large") {
-  //     aspect-ratio: 16/9;
-  //   }
-
-  //   border: 1px solid purple;
-  // }
-
-  &__line {
-    position: absolute;
-    height: auto !important;
-    inset: auto !important;
-    border: 1px solid yellow;
-
-    &--mobile {
-      display: block;
-      //  aspect-ratio: 9/16;
-    }
-
-    &--desktop {
-      display: none;
-    }
-
-    @include respond-to("medium") {
-      &--mobile {
-        display: none;
-      }
-
-      &--desktop {
-        display: block;
-        aspect-ratio: 4/3;
-        object-fit: cover;
-        margin-top: 5%;
-        max-height: 80vh;
-        border: 1px solid pink;
-      }
-    }
-
-    @include respond-to("large") {
-      &--desktop {
-        aspect-ratio: 16/9;
-        max-height: 95%;
-        // object-fit: fill;
-        object-position: top left;
-        border: 1px solid greenyellow;
-      }
-    }
-  }
+  aspect-ratio: 1 / 1;
 }
