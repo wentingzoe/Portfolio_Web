@@ -1,24 +1,25 @@
+@import "./fonts/fonts.scss";
+
 :root {
   --section-padding: clamp(5em, 21vh, 12em);
   --container-padding: clamp(2.5em, 8vw, 8em);
   --gap-padding: clamp(1.5em, 4vw, 2.5em);
+
+  --grid-size: calc(90vw / 8);
 }
+
 @include respond-to("small") {
   :root {
-    // --container-padding: clamp(1.25em, 4vw, 2.5em);
-    // --section-padding: max(2.5em, 12vh);
     background-color: $color-primary-light; //test
   }
 }
 @include respond-to("medium") {
   :root {
-    // --section-padding: 12vh;
     background-color: $color-secondary; //test
   }
 }
 @include respond-to("large") {
   :root {
-    // --container-padding: 6vw;
     background-color: $color-tertiary; //test
   }
 }
@@ -28,7 +29,6 @@
 *:after,
 *:before {
   -webkit-box-sizing: border-box;
-
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -51,7 +51,7 @@ body {
   /* cursor: wait; Add after Preloader*/
   color: $color-text-light;
   background-color: $color-primary;
-  font-size: 16px; //fallback
+  font-size: $base-font-size;
   font-size: clamp(16px, 1.2vw, 19px);
 }
 
@@ -88,16 +88,16 @@ strong:last-child {
   margin-bottom: 0;
 }
 h1 {
-  font-family: "", sans-serif;
+  font-family: "CF-custome", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(3.25em, 7vw, 8em);
-  font-size: calc(clamp(3.25em, 5vw, 4.5em) * 0.875);
+
   line-height: 1.065;
   margin-bottom: 1em;
 }
 h2 {
-  font-family: "", sans-serif;
+  font-family: "CF-regular", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(2.66em, 4.65vw, 5.32em);
@@ -106,7 +106,7 @@ h2 {
 }
 
 h3 {
-  font-family: "", sans-serif;
+  font-family: "CF-regular", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: calc(clamp(3.25em, 5vw, 4.5em) * 0.75);
@@ -115,7 +115,7 @@ h3 {
 }
 
 h4 {
-  font-family: "", sans-serif;
+  font-family: "CF-inline", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(1.55em, 2.3vw, 2.5em);
@@ -124,7 +124,7 @@ h4 {
 }
 
 h5 {
-  font-family: "", sans-serif;
+  font-family: "CF-inline", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: 0.6em;
@@ -135,8 +135,9 @@ h5 {
   opacity: 0.5;
 }
 
-p {
-  font-family: "", sans-serif;
+p,
+span {
+  font-family: "MT-light", sans-serif;
   font-weight: 450;
   font-style: normal;
   color: $color-text-light;
