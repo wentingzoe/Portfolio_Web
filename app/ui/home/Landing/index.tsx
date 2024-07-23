@@ -16,6 +16,10 @@ export default function Home() {
             </div>
           );
         })}
+        <div className={styles.grid__2}>
+          <h1>WenTing</h1>
+          <h1>Yong</h1>
+        </div>
       </div>
     </section>
   );
