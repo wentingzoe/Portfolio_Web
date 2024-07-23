@@ -2,9 +2,9 @@
 $breakpoints: (
   "small": 540px,
   // Mobile devices
-  "medium": 720px,
+  "medium": 768px,
   // Tablets
-  "large": 960px,
+  "large": 1024px,
   // Small desktops
 );
 
@@ -16,6 +16,30 @@ $breakpoints: (
     }
   } @else {
     @warn "Unknown breakpoint: #{$breakpoint}.";
+  }
+}
+
+// Breakpoints
+$breakpoint-mobile: 540px;
+$breakpoint-tablet: 820px;
+$breakpoint-desktop: 1024px;
+
+// Mixins for responsive design
+@mixin mobile {
+  @media (max-width: #{$breakpoint-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-mobile + 1}) and (max-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-tablet + 1}) {
+    @content;
   }
 }
 /* ----------------  Display Flex variables ---------------- */
