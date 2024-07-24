@@ -85,3 +85,11 @@ $breakpoint-desktop: 1024px;
   z-index: 999;
   pointer-events: all;
 }
+
+@mixin small-circle {
+  position: absolute;
+  width: clamp(1em, 1.5vw, 1.5em);
+  height: clamp(1em, 1.5vw, 1.5em);
+  background-color: $color-light;
+  border-radius: 50%;
+}

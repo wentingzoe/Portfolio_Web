@@ -1,10 +1,13 @@
 /* ---------------- Fonts Size ---------------- */
 $base-font-size: 16px;
+$base-line-height: 1.064;
+$base-h1-size: clamp(3.25em, 7vw, 8em);
 
 /* ---------------- Color Variables ---------------- */
 $color-primary: #000000;
 $color-secondary: #f28705;
-$color-tertiary: #d74a2e;
+$color-tertiary: #eb532f;
+$color-light: #ffffff;
 
 $color-primary-light: lighten($color-primary, 15%);
 $color-primary-dark: darken($color-primary, 15%);
