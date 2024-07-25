@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { navItems, socialItems } from "@/app/lib/data";
 import Image from "next/image";
 import styles from "./style.module.scss";
 
@@ -34,13 +35,14 @@ export default function Home() {
             </div>
           );
         })}
+        {/* Icon */}
         <div className={`${styles.grid__1} ${styles.icon}`}>
           <span className={styles.icon__square} />
           <span className={styles.icon__circle} />
           <span className={styles.icon__triangle} />
           <span className={styles.icon__smallcircle} />
         </div>
-
+        {/* Name */}
         <div className={`${styles.grid__2} ${styles.name}`}>
           <div className={styles.name__first}>
             <span>Code by</span>
@@ -51,9 +53,10 @@ export default function Home() {
             <h1>Yong</h1>
           </div>
         </div>
+
+        {/* Title */}
         <div className={`${styles.grid__3} ${styles.title}`}>
           <h1 className={styles.title__creative}>CREATIVE</h1>
-
           <div className={styles.title__item}>
             <h1>Developer</h1>
             <h1>&Designer</h1>
@@ -67,8 +70,39 @@ export default function Home() {
             <h4>{time}</h4>
           </div>
         </div>
+
         {/* Contact */}
-        <div className={`${styles.grid__5} ${styles.contact}`}></div>
+        <div className={`${styles.grid__5} ${styles.contact}`}>
+          <div className={styles.contact__iconGroup}>
+            {[...Array(9)].map((_, index) => {
+              const socialItem = socialItems[index - 3];
+              return (
+                <div key={index} className={styles.contact__gridItem}>
+                  {index >= 3 && index < 6 && socialItem ? (
+                    <a
+                      href={socialItem.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={`/images/${socialItem.src}`}
+                        alt={socialItem.title}
+                        layout="responsive"
+                        width={40}
+                        height={40}
+                      />
+                    </a>
+                  ) : (
+                    <div className={styles.contact__shape}></div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          <div className={styles.contact__text}>
+            <h3>Contact</h3>
+          </div>
+        </div>
 
         {/* Menu */}
         <div className={`${styles.grid__6} ${styles.menu}`}>
