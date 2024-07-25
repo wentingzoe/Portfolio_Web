@@ -93,3 +93,9 @@ $breakpoint-desktop: 1024px;
   background-color: $color-light;
   border-radius: 50%;
 }
+
+@mixin grid-right-bottom {
+  align-self: end;
+  justify-self: end;
+  padding: 0.5em;
+}

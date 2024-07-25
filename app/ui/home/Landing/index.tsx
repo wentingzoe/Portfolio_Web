@@ -62,8 +62,18 @@ export default function Home() {
             <h1>&Designer</h1>
           </div>
         </div>
+
+        {/* Location */}
         <div className={`${styles.grid__4} ${styles.location}`}>
-          <div className={styles.location__icon}></div>
+          <div className={styles.location__icon}>
+            <Image
+              src="/images/icon_loction.svg"
+              alt="location"
+              layout="responsive"
+              width={100}
+              height={100}
+            />
+          </div>
           <div className={styles.location__text}>
             <h4>Based in</h4>
             <h4>CANADA/EST</h4>
@@ -156,14 +166,52 @@ export default function Home() {
         <div className={`${styles.grid__11} ${styles.menuSide}`}>
           <div className={styles.menuSide__triangle}></div>
         </div>
-        <div className={`${styles.grid__12} ${styles}`}></div>
-        <div className={`${styles.grid__13} ${styles.halfcircle}`}>
-          <div className={styles.halfcircle__inner}></div>
+
+        {/* Version */}
+        <div className={`${styles.grid__12} ${styles.version}`}>
+          <h4 className={styles.version__text}>© 2024</h4>
         </div>
-        <div className={`${styles.grid__14} ${styles}`}></div>
-        <div className={`${styles.grid__15} ${styles}`}></div>
-        <div className={`${styles.grid__16} ${styles}`}></div>
-        <div className={`${styles.grid__17} ${styles}`}></div>
+        <div className={`${styles.grid__13} ${styles.halfCircle}`}>
+          <div className={styles.halfCircle__inner}></div>
+        </div>
+        <div className={`${styles.grid__14} ${styles.shape}`}>
+          <Image
+            src="/images/shape_3_squares.svg"
+            alt="shape"
+            layout="responsive"
+            width={100}
+            height={100}
+          />
+        </div>
+        <div className={`${styles.grid__15} ${styles.shape}`}>
+          <Image
+            src="/images/shape_3_circles.svg"
+            alt="shape"
+            layout="responsive"
+            width={100}
+            height={100}
+          />
+        </div>
+
+        <div className={`${styles.grid__16} ${styles.shape}`}>
+          <Image
+            src="/images/shape_3_triangles.svg"
+            alt="shape"
+            layout="responsive"
+            width={100}
+            height={100}
+          />
+        </div>
+
+        <div className={`${styles.grid__17} ${styles.shape}`}>
+          <Image
+            src="/images/shape_next_contact.svg"
+            alt="shape"
+            layout="responsive"
+            width={100}
+            height={100}
+          />
+        </div>
         <div className={`${styles.grid__18} ${styles}`}></div>
         <div className={`${styles.grid__19} ${styles}`}></div>
         <div className={`${styles.grid__20} ${styles}`}></div>
