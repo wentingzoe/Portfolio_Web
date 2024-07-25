@@ -1,26 +1,11 @@
 /* ---------------- Typography ---------------- */
-@font-face {
-  font-family: "CF-custome";
-  src: url("./CreativeFusion-custome1.otf") format("opentype"),
-    url("./CreativeFusion-custome1.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: auto;
-}
 
 @font-face {
-  font-family: "CF-inline";
-  src: url("./CreativeFusion-custome1inline.otf") format("opentype"),
-    url("./CreativeFusion-custome1inline.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: auto;
-}
-
-@font-face {
-  font-family: "CF-regular";
-  src: url("./CreativeFusion-Regular.otf") format("opentype"),
-    url("./CreativeFusion-Regular.ttf") format("truetype");
+  font-family: "MidCentury";
+  src: url("./MidCentury.otf") format("opentype"),
+    url("./MidCentury.ttf") format("truetype"),
+    url("./MidCentury.woff") format("woff"),
+    url("./MidCentury.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: auto;

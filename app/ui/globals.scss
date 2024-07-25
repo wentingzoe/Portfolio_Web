@@ -4,8 +4,6 @@
   --section-padding: clamp(5em, 21vh, 12em);
   --container-padding: clamp(2.5em, 8vw, 8em);
   --gap-padding: clamp(1.5em, 4vw, 2.5em);
-
-  --grid-size: calc(90vw / 8);
 }
 
 @include respond-to("small") {
@@ -88,55 +86,56 @@ strong:last-child {
   margin-bottom: 0;
 }
 h1 {
-  font-family: "CF-custome", sans-serif;
+  font-family: "MidCentury", sans-serif;
   font-weight: 450;
   font-style: normal;
-  font-size: clamp(3.25em, 7vw, 8em);
-
+  font-size: $base-h1-size;
   line-height: 1.065;
-  margin-bottom: 1em;
 }
 h2 {
-  font-family: "CF-regular", sans-serif;
+  font-family: "MidCentury", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: clamp(2.66em, 4.65vw, 5.32em);
   line-height: 1.065;
-  margin-bottom: 1em;
 }
 
 h3 {
-  font-family: "CF-regular", sans-serif;
+  font-family: "MidCentury", sans-serif;
   font-weight: 450;
   font-style: normal;
-  font-size: calc(clamp(3.25em, 5vw, 4.5em) * 0.75);
+  font-size: clamp(1.5em, 3vw, 2em);
+  text-transform: uppercase;
   line-height: 1.065;
-  margin-bottom: 0.66em;
 }
 
 h4 {
-  font-family: "CF-inline", sans-serif;
+  font-family: "MT-light", sans-serif;
   font-weight: 450;
   font-style: normal;
-  font-size: clamp(1.55em, 2.3vw, 2.5em);
-  line-height: 1.45;
-  margin-bottom: 1em;
+  font-size: clamp(1em, 1.8vw, 2em);
+  line-height: 1;
 }
 
 h5 {
-  font-family: "CF-inline", sans-serif;
+  font-family: "MT-regular", sans-serif;
   font-weight: 450;
   font-style: normal;
   font-size: 0.6em;
   line-height: 1.065;
-  margin-bottom: 1em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   opacity: 0.5;
 }
 
-p,
 span {
+  font-family: "MidCentury", sans-serif;
+  font-weight: 450;
+  font-style: normal;
+  font-size: clamp(1em, 1.5vw, 1.5em);
+}
+
+p {
   font-family: "MT-light", sans-serif;
   font-weight: 450;
   font-style: normal;

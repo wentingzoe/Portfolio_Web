@@ -12,8 +12,8 @@ const navItems = [
     href: "/work",
   },
   {
-    title: "Blog",
-    href: "/blog",
+    title: "Resume",
+    href: "/resume",
   },
   {
     title: "Contact",
@@ -54,14 +54,17 @@ const projects = [
 const socialItems = [
   {
     title: "LinkedIn",
+    src: "icon-linkedin.svg",
     href: "https://www.linkedin.com/in/wentingyong/",
   },
   {
     title: "GitHub",
+    src: "icon-github.svg",
     href: "https://github.com/wentingzoe",
   },
   {
     title: "Email",
+    src: "icon-email.svg",
     href: "mailto:ywtzoe@gmail.com",
   },
 ];
