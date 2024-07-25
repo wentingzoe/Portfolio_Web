@@ -1,8 +1,25 @@
 "use client";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./style.module.scss";
 
 export default function Home() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const estTime = new Date().toLocaleString("en-US", {
+        timeZone: "America/New_York",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      });
+      setTime(estTime);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
   return (
     <section className={styles.landing}>
       <div className={styles.landing__container}>
@@ -41,7 +58,14 @@ export default function Home() {
             <h1>&Designer</h1>
           </div>
         </div>
-        <div className={`${styles.grid__4} ${styles}`}></div>
+        <div className={`${styles.grid__4} ${styles.location}`}>
+          <div className={styles.location__icon}></div>
+          <div className={styles.location__text}>
+            <h4>Based in</h4>
+            <h4>CANADA/EST</h4>
+            <h4>{time}</h4>
+          </div>
+        </div>
         <div className={`${styles.grid__5} ${styles}`}></div>
         <div className={`${styles.grid__6} ${styles}`}></div>
         <div className={`${styles.grid__7} ${styles}`}></div>
