@@ -16,7 +16,13 @@ export default function Home() {
             </div>
           );
         })}
-        <div className={`${styles.grid__1} ${styles.icon}`}></div>
+        <div className={`${styles.grid__1} ${styles.icon}`}>
+          <span className={styles.icon__square} />
+          <span className={styles.icon__circle} />
+          <span className={styles.icon__triangle} />
+          <span className={styles.icon__smallcircle} />
+        </div>
+
         <div className={`${styles.grid__2} ${styles.name}`}>
           <div className={styles.name__first}>
             <span>Code by</span>
