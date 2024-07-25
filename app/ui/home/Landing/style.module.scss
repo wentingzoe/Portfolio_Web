@@ -38,6 +38,7 @@
   height: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
+  //z-index: 999;
 
   @include mobile {
     &:nth-child(n + 13) {
@@ -163,7 +164,6 @@
 /* -- Title --*/
 .grid__3 {
   grid-area: 3/ 5 / span 1 / span 4;
-  background: $gradient-90deg;
 
   @include mobile {
     grid-area: 6/1 / span 1 / span 3;
@@ -179,7 +179,7 @@
   justify-content: space-around;
   align-items: center;
   color: $color-primary;
-
+  background: $gradient-90deg;
   &__creative {
     font-size: calc($grid-size-desktop * 0.8);
     text-transform: uppercase;
@@ -213,11 +213,10 @@
     }
   }
 }
-.grid__4 {
-  //base on
 
+/* -- Location -- */
+.grid__4 {
   grid-area: 4/1 / span 1 / span 2;
-  background-color: $color-secondary;
 
   @include mobile {
     grid-area: 1/2 / span 1 / span 2;
@@ -228,12 +227,9 @@
   }
 }
 
+/* -- Contact -- */
 .grid__5 {
-  //contact
-
   grid-area: 4/7 / span 1 / span 2;
-  background-color: $color-secondary;
-
   @include mobile {
     grid-area: 7/2 / span 1 / span 2;
   }
@@ -242,60 +238,67 @@
   }
 }
 
+/** ------ Menu ----- **/
+
+.menu {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(2, 1fr);
+
+  &__icon {
+    position: relative;
+    align-self: start;
+    width: 80%;
+    padding: 0.5em;
+  }
+  &__text {
+    align-self: end;
+    justify-self: end;
+    padding: 0.5em;
+  }
+}
+
+.menuSide {
+  @include flex-all-center;
+  padding: 5%;
+  background-color: $color-secondary;
+
+  &__square {
+    background-color: $color-primary;
+    width: 80%;
+    height: 80%;
+    transform: rotate(30deg);
+  }
+  &__circle {
+    background-color: $color-primary;
+    border-radius: 50%;
+    width: 80%;
+    height: 80%;
+  }
+  &__triangle {
+    background-color: $color-primary;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    width: 80%;
+    height: 80%;
+    transform: rotate(-90deg);
+  }
+}
+/* -- About -- */
 .grid__6 {
-  //about
+  grid-area: 1/ 6 / span 1 / span 1;
+
   @include mobile {
     grid-area: 4 /1 / span 1 / span 1;
   }
-
   @include tablet {
     grid-area: 3 /2 / span 1 / span 1;
   }
 }
 
+/* -- Work -- */
 .grid__7 {
-  // work circle
-  @include mobile {
-    grid-area: 4/ 2 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 3/ 3 / span 1 / span 1;
-  }
-}
+  grid-area: 2/7 / span 1 / span 1;
 
-.grid__8 {
-  // resume
-  @include mobile {
-    grid-area: 4/ 3 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 3/ 4 / span 1 / span 1;
-  }
-}
-
-.grid__9 {
-  // year
-  @include mobile {
-    grid-area: 7/ 1 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 2/ 1 / span 1 / span 1;
-  }
-}
-
-.grid__10 {
-  //about squre
-  @include mobile {
-    grid-area: 5/ 1 / span 1 / span 1;
-  }
-
-  @include tablet {
-    grid-area: 4/ 2 / span 1 / span 1;
-  }
-}
-
-.grid__11 {
-  // work
   @include mobile {
     grid-area: 5/ 2 / span 1 / span 1;
   }
@@ -304,14 +307,56 @@
     grid-area: 4/ 3 / span 1 / span 1;
   }
 }
+/* -- Resume -- */
+.grid__8 {
+  grid-area: 1/ 8 / span 1 / span 1;
+  @include mobile {
+    grid-area: 4/ 3 / span 1 / span 1;
+  }
+  @include tablet {
+    grid-area: 3/ 4 / span 1 / span 1;
+  }
+}
 
-.grid__12 {
-  // resume triangle
+/* -- About Square -- */
+.grid__9 {
+  grid-area: 2/ 6 / span 1 / span 1;
+  @include mobile {
+    grid-area: 5/ 1 / span 1 / span 1;
+  }
+
+  @include tablet {
+    grid-area: 4/ 2 / span 1 / span 1;
+  }
+}
+/* -- Work Circle -- */
+.grid__10 {
+  grid-area: 1/ 7 / span 1 / span 1;
+  @include mobile {
+    grid-area: 4/ 2 / span 1 / span 1;
+  }
+  @include tablet {
+    grid-area: 3/ 3 / span 1 / span 1;
+  }
+}
+/* -- Resume Triangle -- */
+.grid__11 {
+  grid-area: 2/ 8 / span 1 / span 1;
   @include mobile {
     grid-area: 5/ 3 / span 1 / span 1;
   }
 
   @include tablet {
     grid-area: 4/ 4 / span 1 / span 1;
+  }
+}
+/* -- Version -- */
+.grid__12 {
+  grid-area: 2/ 1 / span 1 / span 1;
+  @include mobile {
+    grid-area: 7/ 1 / span 1 / span 1;
+  }
+  @include tablet {
+    grid-area: 2/ 1 / span 1 / span 1;
   }
 }

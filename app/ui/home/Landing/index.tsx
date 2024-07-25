@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import styles from "./style.module.scss";
 
@@ -66,13 +67,61 @@ export default function Home() {
             <h4>{time}</h4>
           </div>
         </div>
-        <div className={`${styles.grid__5} ${styles}`}></div>
-        <div className={`${styles.grid__6} ${styles}`}></div>
-        <div className={`${styles.grid__7} ${styles}`}></div>
-        <div className={`${styles.grid__8} ${styles}`}></div>
-        <div className={`${styles.grid__9} ${styles}`}></div>
-        <div className={`${styles.grid__10} ${styles}`}></div>
-        <div className={`${styles.grid__11} ${styles}`}></div>
+        {/* Contact */}
+        <div className={`${styles.grid__5} ${styles.contact}`}></div>
+
+        {/* Menu */}
+        <div className={`${styles.grid__6} ${styles.menu}`}>
+          <div className={styles.menu__icon}>
+            <Image
+              src="/images/icon_square_about.svg"
+              alt="about"
+              layout="responsive"
+              width={100}
+              height={40}
+            />
+          </div>
+          <div className={styles.menu__text}>
+            <h3>About</h3>
+          </div>
+        </div>
+        <div className={`${styles.grid__7} ${styles.menu}`}>
+          <div className={styles.menu__icon}>
+            <Image
+              src="/images/icon_circle_work.svg"
+              alt="work"
+              layout="responsive"
+              width={100}
+              height={40}
+            />
+          </div>
+          <div className={styles.menu__text}>
+            <h3>Work</h3>
+          </div>
+        </div>
+        <div className={`${styles.grid__8} ${styles.menu}`}>
+          <div className={styles.menu__icon}>
+            <Image
+              src="/images/icon_triangle_resume.svg"
+              alt="resume"
+              layout="responsive"
+              width={100}
+              height={40}
+            />
+          </div>
+          <div className={styles.menu__text}>
+            <h3>resume</h3>
+          </div>
+        </div>
+        <div className={`${styles.grid__9} ${styles.menuSide}`}>
+          <div className={styles.menuSide__square}></div>
+        </div>
+        <div className={`${styles.grid__10} ${styles.menuSide}`}>
+          <div className={styles.menuSide__circle}></div>
+        </div>
+        <div className={`${styles.grid__11} ${styles.menuSide}`}>
+          <div className={styles.menuSide__triangle}></div>
+        </div>
         <div className={`${styles.grid__12} ${styles}`}></div>
         <div className={`${styles.grid__13} ${styles.halfcircle}`}>
           <div className={styles.halfcircle__inner}></div>
