@@ -167,3 +167,7 @@ a {
 p a {
   text-decoration: underline;
 }
+
+.small-circle {
+  @include small-circle;
+}

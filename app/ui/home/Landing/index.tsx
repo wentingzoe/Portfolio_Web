@@ -29,7 +29,10 @@ export default function Home() {
       <div
         key={index}
         className={`${styles.grid} ${styles[`grid__${index + 1}`]}`}
-      />
+      >
+        {" "}
+        {index + 1}{" "}
+      </div>
     ));
 
   const renderSocialIcons = () => (

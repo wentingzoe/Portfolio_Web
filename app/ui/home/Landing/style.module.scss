@@ -6,13 +6,7 @@
   overflow: hidden;
 
   &__container {
-    position: relative;
-    max-width: 100vw;
-    height: auto;
-    display: grid;
-    border: $border-primary;
-    grid-auto-flow: row;
-    box-sizing: border-box;
+    @include grid-container;
 
     grid-template-columns: repeat(8, $grid-size-desktop);
     grid-template-rows: repeat(4, $grid-size-desktop);
@@ -32,13 +26,11 @@
 
 .grid {
   @include flex-all-center;
-  border: $border-primary;
+  @include grid-box;
+
   background-color: $color-primary;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  //z-index: 999;
 
   @include mobile {
     &:nth-child(n + 10) {
@@ -55,10 +47,11 @@
 
 /* -- Icon --*/
 .grid__1 {
-  grid-area: 1/1/2/2;
+  grid-area: 1/1 / span 1 / span 1;
 }
 
 .icon {
+  position: relative;
   background: $gradient-45deg;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -105,24 +98,19 @@
   padding: calc($gap-padding / 2);
 
   h1 {
+    @include responsive-font-size(
+      $grid-size-desktop,
+      $grid-size-tablet,
+      $grid-size-mobile
+    );
     position: relative;
-    font-size: $grid-size-desktop;
     line-height: 1;
     color: $color-secondary;
-
     background: $gradient-90deg;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-
-    @include mobile {
-      font-size: $grid-size-mobile;
-    }
-
-    @include tablet {
-      font-size: $grid-size-tablet;
-    }
   }
 
   &__first {
@@ -155,42 +143,34 @@
 }
 
 .title {
-  display: flex;
+  @include flex-all-center;
   justify-content: space-around;
   align-items: center;
   color: $color-primary;
   background: $gradient-90deg;
+
   &__creative {
-    font-size: calc($grid-size-desktop * 0.8);
+    @include responsive-font-size(
+      calc($grid-size-desktop * 0.8),
+      calc($grid-size-tablet * 0.8),
+      calc($grid-size-mobile * 0.6)
+    );
     text-transform: uppercase;
-
-    @include mobile {
-      font-size: calc($grid-size-mobile * 0.6);
-    }
-
-    @include tablet {
-      font-size: calc($grid-size-tablet * 0.8);
-    }
   }
 
+  &__item h1 {
+    @include responsive-font-size(
+      calc($grid-size-desktop * 0.5),
+      calc($grid-size-tablet * 0.5),
+      calc($grid-size-mobile * 0.4)
+    );
+    line-height: 0.8;
+  }
   &__item {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-
-    h1 {
-      font-size: calc($grid-size-desktop * 0.5);
-      line-height: 0.8;
-
-      @include mobile {
-        font-size: calc($grid-size-mobile * 0.4);
-      }
-
-      @include tablet {
-        font-size: calc($grid-size-tablet * 0.5);
-      }
-    }
   }
 }
 
@@ -274,16 +254,12 @@
 }
 /** ------ Menu ----- **/
 .menu {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(2, 1fr);
+  @include grid-row-1x2;
 
   &__nav {
+    @include grid-row-1x2;
     width: 100%;
     height: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(2, 1fr);
   }
   &__icon {
     position: relative;
@@ -292,9 +268,7 @@
     padding: 0.5em;
   }
   &__text {
-    align-self: end;
-    justify-self: end;
-    padding: 0.5em;
+    @include grid-right-bottom;
   }
 
   &__shape {
@@ -305,25 +279,24 @@
     height: 100%;
     width: 100%;
 
-    &__about {
+    &__about,
+    &__work,
+    &__resume {
       background-color: $color-primary;
       width: 80%;
       height: 80%;
+    }
+
+    &__about {
       transform: rotate(30deg);
     }
 
     &__work {
-      background-color: $color-primary;
       border-radius: 50%;
-      width: 80%;
-      height: 80%;
     }
 
     &__resume {
-      background-color: $color-primary;
       clip-path: polygon(0 0, 100% 0, 0 100%);
-      width: 80%;
-      height: 80%;
       transform: rotate(-90deg);
     }
   }
@@ -386,8 +359,7 @@
 }
 /* -- Half Circle --*/
 .grid__10 {
-  grid-column: 5/6;
-  grid-row: 1/3;
+  grid-area: 1/5 / span 2 / span 1;
 
   @include tablet {
     grid-area: 3 /1 / span 2 / span 1;
