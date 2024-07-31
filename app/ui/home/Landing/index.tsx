@@ -24,17 +24,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const renderGridItems = () =>
-    [...Array(18)].map((_, index) => (
-      <div
-        key={index}
-        className={`${styles.grid} ${styles[`grid__${index + 1}`]}`}
-      >
-        {" "}
-        {index + 1}{" "}
-      </div>
-    ));
-
   const renderSocialIcons = () => (
     <div className={styles.contact__iconGroup}>
       {[...Array(9)].map((_, index) => {
@@ -66,11 +55,14 @@ export default function Home() {
 
   const renderNavItems = () => {
     return navItems.slice(1, -1).map((item, index) => {
-      const gridClass = `grid__${index + 6}`;
-      const shapeClass = `menu__shape__${item.title.toLowerCase()}`;
+      const menuClass = `menu__${item.title.toLowerCase()}`;
+      const shapeClass = `menu__shape--${item.title.toLowerCase()}`;
 
       return (
-        <div key={item.title} className={`${styles[gridClass]} ${styles.menu}`}>
+        <div
+          key={item.title}
+          className={`${styles.grid} ${styles.menu} ${styles[menuClass]}`}
+        >
           <Link href={item.href} className={styles.menu__nav}>
             <div className={styles.menu__icon}>
               <Image
@@ -93,20 +85,52 @@ export default function Home() {
     });
   };
 
+  const renderShapeImages = () => {
+    return [...Array(8)].map((_, index) => {
+      const shapeIndex = [0, 2, 5, 7];
+      const shapeName = `shape__${index}`;
+
+      if (shapeIndex.includes(index)) {
+        const imageIndex = shapeIndex.indexOf(index);
+        const image = shapeImages[imageIndex];
+
+        return (
+          <div
+            key={`shape_image_${index}`}
+            className={`${styles.grid} ${styles.shape} ${styles[shapeName]}`}
+          >
+            <Image
+              src={`/images/${image}`}
+              alt={`Shape ${imageIndex + 1}`}
+              layout="responsive"
+              width={100}
+              height={100}
+            />
+          </div>
+        );
+      } else {
+        return (
+          <div
+            key={`shape_empty_${index}`}
+            className={`${styles.grid} ${styles.shape}`}
+          />
+        );
+      }
+    });
+  };
+
   return (
     <section className={styles.landing}>
       <div className={styles.landing__container}>
-        {renderGridItems()}
-
         {/* Icon */}
-        <div className={`${styles.grid__1} ${styles.icon}`}>
+        <div className={`${styles.grid} ${styles.icon}`}>
           {["square", "circle", "triangle", "smallcircle"].map((shape) => (
             <span key={shape} className={styles[`icon__${shape}`]} />
           ))}
         </div>
 
         {/* Name */}
-        <div className={`${styles.grid__2} ${styles.name}`}>
+        <div className={`${styles.grid} ${styles.name}`}>
           <div className={styles.name__first}>
             <span>Code by</span>
             <h1>WenTing</h1>
@@ -118,7 +142,7 @@ export default function Home() {
         </div>
 
         {/* Title */}
-        <div className={`${styles.grid__3} ${styles.title}`}>
+        <div className={`${styles.grid} ${styles.title}`}>
           <h1 className={styles.title__creative}>CREATIVE</h1>
           <div className={styles.title__item}>
             <h1>Developer</h1>
@@ -127,7 +151,7 @@ export default function Home() {
         </div>
 
         {/* Location */}
-        <div className={`${styles.grid__4} ${styles.location}`}>
+        <div className={`${styles.grid} ${styles.location}`}>
           <div className={styles.location__icon}>
             <Image
               src="/images/icon_loction.svg"
@@ -145,40 +169,27 @@ export default function Home() {
         </div>
 
         {/* Contact */}
-        <div className={`${styles.grid__5} ${styles.contact}`}>
+        <div className={`${styles.grid} ${styles.contact}`}>
           {renderSocialIcons()}
           <Link href="/contact" className={styles.contact__text}>
             <h3>Contact</h3>
           </Link>
         </div>
 
-        {/* Menu grid__6,7,8 */}
+        {/* Menu */}
         {renderNavItems()}
 
         {/* Version */}
-        <div className={`${styles.grid__9} ${styles.version}`}>
+        <div className={`${styles.grid} ${styles.version}`}>
           <h4 className={styles.version__text}>© 2024</h4>
         </div>
 
-        <div className={`${styles.grid__10} ${styles.halfCircle}`}>
+        <div className={`${styles.grid} ${styles.halfCircle}`}>
           <div className={styles.halfCircle__inner} />
         </div>
 
         {/* Shape Images */}
-        {shapeImages.map((image, index) => (
-          <div
-            key={image}
-            className={`${styles[`grid__${index + 11}`]} ${styles.shape}`}
-          >
-            <Image
-              src={`/images/${image}`}
-              alt="shape"
-              layout="responsive"
-              width={100}
-              height={100}
-            />
-          </div>
-        ))}
+        {renderShapeImages()}
       </div>
     </section>
   );
