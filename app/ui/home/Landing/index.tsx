@@ -24,101 +24,6 @@ export default function Home() {
     return () => clearInterval(timer);
   }, []);
 
-  const renderSocialIcons = () => (
-    <div className={styles.contact__iconGroup}>
-      {[...Array(9)].map((_, index) => {
-        const socialItem = socialItems[(index - 3) as number];
-        return (
-          <div key={index} className={styles.contact__gridItem}>
-            {index >= 3 && index < 6 && socialItem ? (
-              <a
-                href={socialItem.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src={`/images/${socialItem.src}`}
-                  alt={socialItem.title}
-                  layout="responsive"
-                  width={40}
-                  height={40}
-                />
-              </a>
-            ) : (
-              <div className={styles.contact__shape} />
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
-
-  const renderNavItems = () => {
-    return navItems.slice(1, -1).map((item, index) => {
-      const menuClass = `menu__${item.title.toLowerCase()}`;
-      const shapeClass = `menu__shape--${item.title.toLowerCase()}`;
-
-      return (
-        <div
-          key={item.title}
-          className={`${styles.grid} ${styles.menu} ${styles[menuClass]}`}
-        >
-          <Link href={item.href} className={styles.menu__nav}>
-            <div className={styles.menu__icon}>
-              <Image
-                src={`/images/shape_${item.title.toLowerCase()}.svg`}
-                alt={item.title}
-                layout="responsive"
-                width={100}
-                height={40}
-              />
-            </div>
-            <div className={styles.menu__text}>
-              <h3>{item.title}</h3>
-            </div>
-          </Link>
-          <div className={styles.menu__shape}>
-            <div className={styles[shapeClass]} />
-          </div>
-        </div>
-      );
-    });
-  };
-
-  const renderShapeImages = () => {
-    return [...Array(8)].map((_, index) => {
-      const shapeIndex = [0, 2, 5, 7];
-      const shapeName = `shape__${index}`;
-
-      if (shapeIndex.includes(index)) {
-        const imageIndex = shapeIndex.indexOf(index);
-        const image = shapeImages[imageIndex];
-
-        return (
-          <div
-            key={`shape_image_${index}`}
-            className={`${styles.grid} ${styles.shape} ${styles[shapeName]}`}
-          >
-            <Image
-              src={`/images/${image}`}
-              alt={`Shape ${imageIndex + 1}`}
-              layout="responsive"
-              width={100}
-              height={100}
-            />
-          </div>
-        );
-      } else {
-        return (
-          <div
-            key={`shape_empty_${index}`}
-            className={`${styles.grid} ${styles.shape}`}
-          />
-        );
-      }
-    });
-  };
-
   return (
     <section className={styles.landing}>
       <div className={styles.landing__container}>
@@ -170,14 +75,67 @@ export default function Home() {
 
         {/* Contact */}
         <div className={`${styles.grid} ${styles.contact}`}>
-          {renderSocialIcons()}
+          <div className={styles.contact__iconGroup}>
+            {[...Array(9)].map((_, index) => {
+              const socialItem = socialItems[(index - 3) as number];
+              return (
+                <div key={index} className={styles.contact__gridItem}>
+                  {index >= 3 && index < 6 && socialItem ? (
+                    <a
+                      href={socialItem.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={`/images/${socialItem.src}`}
+                        alt={socialItem.title}
+                        layout="responsive"
+                        width={40}
+                        height={40}
+                      />
+                    </a>
+                  ) : (
+                    <div className={styles.contact__shape} />
+                  )}
+                </div>
+              );
+            })}
+          </div>
           <Link href="/contact" className={styles.contact__text}>
             <h3>Contact</h3>
           </Link>
         </div>
 
         {/* Menu */}
-        {renderNavItems()}
+        {navItems.slice(1, -1).map((item, index) => {
+          const menuClass = `menu__${item.title.toLowerCase()}`;
+          const shapeClass = `menu__shape--${item.title.toLowerCase()}`;
+
+          return (
+            <div
+              key={item.title}
+              className={`${styles.grid} ${styles.menu} ${styles[menuClass]}`}
+            >
+              <Link href={item.href} className={styles.menu__nav}>
+                <div className={styles.menu__icon}>
+                  <Image
+                    src={`/images/shape_${item.title.toLowerCase()}.svg`}
+                    alt={item.title}
+                    layout="responsive"
+                    width={100}
+                    height={40}
+                  />
+                </div>
+                <div className={styles.menu__text}>
+                  <h3>{item.title}</h3>
+                </div>
+              </Link>
+              <div className={styles.menu__shape}>
+                <div className={styles[shapeClass]} />
+              </div>
+            </div>
+          );
+        })}
 
         {/* Version */}
         <div className={`${styles.grid} ${styles.version}`}>
@@ -189,7 +147,37 @@ export default function Home() {
         </div>
 
         {/* Shape Images */}
-        {renderShapeImages()}
+        {[...Array(8)].map((_, index) => {
+          const shapeIndex = [0, 2, 5, 7];
+          const shapeName = `shape__${index}`;
+
+          if (shapeIndex.includes(index)) {
+            const imageIndex = shapeIndex.indexOf(index);
+            const image = shapeImages[imageIndex];
+
+            return (
+              <div
+                key={`shape_image_${index}`}
+                className={`${styles.grid} ${styles.shape} ${styles[shapeName]}`}
+              >
+                <Image
+                  src={`/images/${image}`}
+                  alt={`Shape ${imageIndex + 1}`}
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div
+                key={`shape_empty_${index}`}
+                className={`${styles.grid} ${styles.shape}`}
+              />
+            );
+          }
+        })}
       </div>
     </section>
   );
