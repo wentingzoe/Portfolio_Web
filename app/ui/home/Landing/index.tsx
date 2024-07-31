@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { navItems, socialItems } from "@/app/lib/data";
+import { navItems, socialItems, shapeImages } from "@/app/lib/data";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./style.module.scss";
 
 export default function Home() {
@@ -22,40 +23,31 @@ export default function Home() {
 
     return () => clearInterval(timer);
   }, []);
+
   return (
     <section className={styles.landing}>
       <div className={styles.landing__container}>
-        {[...Array(21)].map((_, index) => {
-          return (
-            <div
-              key={index}
-              className={`${styles.grid} ${styles[`grid__${index + 1}`]}`}
-            >
-              {index + 1}
-            </div>
-          );
-        })}
         {/* Icon */}
-        <div className={`${styles.grid__1} ${styles.icon}`}>
-          <span className={styles.icon__square} />
-          <span className={styles.icon__circle} />
-          <span className={styles.icon__triangle} />
-          <span className={styles.icon__smallcircle} />
+        <div className={`${styles.grid} ${styles.icon}`}>
+          {["square", "circle", "triangle", "smallcircle"].map((shape) => (
+            <span key={shape} className={styles[`icon__${shape}`]} />
+          ))}
         </div>
+
         {/* Name */}
-        <div className={`${styles.grid__2} ${styles.name}`}>
+        <div className={`${styles.grid} ${styles.name}`}>
           <div className={styles.name__first}>
             <span>Code by</span>
             <h1>WenTing</h1>
           </div>
           <div className={styles.name__last}>
-            <div className={styles["small-circle"]}></div>
+            <div className={styles["small-circle"]} />
             <h1>Yong</h1>
           </div>
         </div>
 
         {/* Title */}
-        <div className={`${styles.grid__3} ${styles.title}`}>
+        <div className={`${styles.grid} ${styles.title}`}>
           <h1 className={styles.title__creative}>CREATIVE</h1>
           <div className={styles.title__item}>
             <h1>Developer</h1>
@@ -64,7 +56,7 @@ export default function Home() {
         </div>
 
         {/* Location */}
-        <div className={`${styles.grid__4} ${styles.location}`}>
+        <div className={`${styles.grid} ${styles.location}`}>
           <div className={styles.location__icon}>
             <Image
               src="/images/icon_loction.svg"
@@ -82,10 +74,10 @@ export default function Home() {
         </div>
 
         {/* Contact */}
-        <div className={`${styles.grid__5} ${styles.contact}`}>
+        <div className={`${styles.grid} ${styles.contact}`}>
           <div className={styles.contact__iconGroup}>
             {[...Array(9)].map((_, index) => {
-              const socialItem = socialItems[index - 3];
+              const socialItem = socialItems[(index - 3) as number];
               return (
                 <div key={index} className={styles.contact__gridItem}>
                   {index >= 3 && index < 6 && socialItem ? (
@@ -103,119 +95,89 @@ export default function Home() {
                       />
                     </a>
                   ) : (
-                    <div className={styles.contact__shape}></div>
+                    <div className={styles.contact__shape} />
                   )}
                 </div>
               );
             })}
           </div>
-          <div className={styles.contact__text}>
+          <Link href="/contact" className={styles.contact__text}>
             <h3>Contact</h3>
-          </div>
+          </Link>
         </div>
 
         {/* Menu */}
-        <div className={`${styles.grid__6} ${styles.menu}`}>
-          <div className={styles.menu__icon}>
-            <Image
-              src="/images/icon_square_about.svg"
-              alt="about"
-              layout="responsive"
-              width={100}
-              height={40}
-            />
-          </div>
-          <div className={styles.menu__text}>
-            <h3>About</h3>
-          </div>
-        </div>
-        <div className={`${styles.grid__7} ${styles.menu}`}>
-          <div className={styles.menu__icon}>
-            <Image
-              src="/images/icon_circle_work.svg"
-              alt="work"
-              layout="responsive"
-              width={100}
-              height={40}
-            />
-          </div>
-          <div className={styles.menu__text}>
-            <h3>Work</h3>
-          </div>
-        </div>
-        <div className={`${styles.grid__8} ${styles.menu}`}>
-          <div className={styles.menu__icon}>
-            <Image
-              src="/images/icon_triangle_resume.svg"
-              alt="resume"
-              layout="responsive"
-              width={100}
-              height={40}
-            />
-          </div>
-          <div className={styles.menu__text}>
-            <h3>resume</h3>
-          </div>
-        </div>
-        <div className={`${styles.grid__9} ${styles.menuSide}`}>
-          <div className={styles.menuSide__square}></div>
-        </div>
-        <div className={`${styles.grid__10} ${styles.menuSide}`}>
-          <div className={styles.menuSide__circle}></div>
-        </div>
-        <div className={`${styles.grid__11} ${styles.menuSide}`}>
-          <div className={styles.menuSide__triangle}></div>
-        </div>
+        {navItems.slice(1, -1).map((item, index) => {
+          const menuClass = `menu__${item.title.toLowerCase()}`;
+          const shapeClass = `menu__shape--${item.title.toLowerCase()}`;
+
+          return (
+            <div
+              key={item.title}
+              className={`${styles.grid} ${styles.menu} ${styles[menuClass]}`}
+            >
+              <Link href={item.href} className={styles.menu__nav}>
+                <div className={styles.menu__icon}>
+                  <Image
+                    src={`/images/shape_${item.title.toLowerCase()}.svg`}
+                    alt={item.title}
+                    layout="responsive"
+                    width={100}
+                    height={40}
+                  />
+                </div>
+                <div className={styles.menu__text}>
+                  <h3>{item.title}</h3>
+                </div>
+              </Link>
+              <div className={styles.menu__shape}>
+                <div className={styles[shapeClass]} />
+              </div>
+            </div>
+          );
+        })}
 
         {/* Version */}
-        <div className={`${styles.grid__12} ${styles.version}`}>
+        <div className={`${styles.grid} ${styles.version}`}>
           <h4 className={styles.version__text}>© 2024</h4>
         </div>
-        <div className={`${styles.grid__13} ${styles.halfCircle}`}>
-          <div className={styles.halfCircle__inner}></div>
-        </div>
-        <div className={`${styles.grid__14} ${styles.shape}`}>
-          <Image
-            src="/images/shape_3_squares.svg"
-            alt="shape"
-            layout="responsive"
-            width={100}
-            height={100}
-          />
-        </div>
-        <div className={`${styles.grid__15} ${styles.shape}`}>
-          <Image
-            src="/images/shape_3_circles.svg"
-            alt="shape"
-            layout="responsive"
-            width={100}
-            height={100}
-          />
+
+        <div className={`${styles.grid} ${styles.halfCircle}`}>
+          <div className={styles.halfCircle__inner} />
         </div>
 
-        <div className={`${styles.grid__16} ${styles.shape}`}>
-          <Image
-            src="/images/shape_3_triangles.svg"
-            alt="shape"
-            layout="responsive"
-            width={100}
-            height={100}
-          />
-        </div>
+        {/* Shape Images */}
+        {[...Array(8)].map((_, index) => {
+          const shapeIndex = [0, 2, 5, 7];
+          const shapeName = `shape__${index}`;
 
-        <div className={`${styles.grid__17} ${styles.shape}`}>
-          <Image
-            src="/images/shape_next_contact.svg"
-            alt="shape"
-            layout="responsive"
-            width={100}
-            height={100}
-          />
-        </div>
-        <div className={`${styles.grid__18} ${styles}`}></div>
-        <div className={`${styles.grid__19} ${styles}`}></div>
-        <div className={`${styles.grid__20} ${styles}`}></div>
-        <div className={`${styles.grid__21} ${styles}`}></div>
+          if (shapeIndex.includes(index)) {
+            const imageIndex = shapeIndex.indexOf(index);
+            const image = shapeImages[imageIndex];
+
+            return (
+              <div
+                key={`shape_image_${index}`}
+                className={`${styles.grid} ${styles.shape} ${styles[shapeName]}`}
+              >
+                <Image
+                  src={`/images/${image}`}
+                  alt={`Shape ${imageIndex + 1}`}
+                  layout="responsive"
+                  width={100}
+                  height={100}
+                />
+              </div>
+            );
+          } else {
+            return (
+              <div
+                key={`shape_empty_${index}`}
+                className={`${styles.grid} ${styles.shape}`}
+              />
+            );
+          }
+        })}
       </div>
     </section>
   );

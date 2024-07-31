@@ -1,22 +1,22 @@
 const navItems = [
   {
-    title: "Home",
+    title: "home",
     href: "/",
   },
   {
-    title: "About",
+    title: "about",
     href: "/about",
   },
   {
-    title: "Work",
+    title: "work",
     href: "/work",
   },
   {
-    title: "Resume",
+    title: "resume",
     href: "/resume",
   },
   {
-    title: "Contact",
+    title: "contact",
     href: "/contact",
   },
 ];
@@ -69,8 +69,16 @@ const socialItems = [
   },
 ];
 
+const shapeImages = [
+  "shape_3_squares.svg",
+  "shape_3_circles.svg",
+  "shape_3_triangles.svg",
+  "shape_next_contact.svg",
+];
+
 module.exports = {
   navItems,
   projects,
   socialItems,
+  shapeImages,
 };

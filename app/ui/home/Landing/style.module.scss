@@ -6,13 +6,7 @@
   overflow: hidden;
 
   &__container {
-    position: relative;
-    max-width: 100vw;
-    height: auto;
-    display: grid;
-    border: $border-primary;
-    grid-auto-flow: row;
-    box-sizing: border-box;
+    @include grid-container;
 
     grid-template-columns: repeat(8, $grid-size-desktop);
     grid-template-rows: repeat(4, $grid-size-desktop);
@@ -31,34 +25,30 @@
 }
 
 .grid {
-  @include flex-all-center;
-  border: $border-primary;
+  @include grid-box;
+
   background-color: $color-primary;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  //z-index: 999;
 
   @include mobile {
-    &:nth-child(n + 13) {
+    &:nth-child(n + 10) {
       display: none;
     }
   }
 
   @include tablet {
-    &:nth-child(n + 14) {
+    &:nth-child(n + 11) {
       display: none;
     }
   }
 }
 
 /* -- Icon --*/
-.grid__1 {
-  grid-area: 1/1/2/2;
-}
 
 .icon {
+  grid-area: 1/1 / span 1 / span 1;
+  position: relative;
   background: $gradient-45deg;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -93,36 +83,29 @@
 }
 
 /* -- Name --*/
-.grid__2 {
+
+.name {
   grid-area: 1/2 / span 2 / span 3;
+  flex-direction: column;
+  padding: calc($gap-padding / 2);
 
   @include mobile {
     grid-area: 2/1 / span 2 / span 3;
   }
-}
-.name {
-  flex-direction: column;
-  padding: calc($gap-padding / 2);
-
   h1 {
+    @include responsive-font-size(
+      $grid-size-desktop,
+      $grid-size-tablet,
+      $grid-size-mobile
+    );
     position: relative;
-    font-size: $grid-size-desktop;
     line-height: 1;
     color: $color-secondary;
-
     background: $gradient-90deg;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-
-    @include mobile {
-      font-size: $grid-size-mobile;
-    }
-
-    @include tablet {
-      font-size: $grid-size-tablet;
-    }
   }
 
   &__first {
@@ -141,30 +124,14 @@
   }
 }
 
-/* -- Half Circle --*/
-.grid__13 {
-  grid-column: 5/6;
-  grid-row: 1/3;
-
-  @include tablet {
-    grid-area: 3 /1 / span 2 / span 1;
-  }
-}
-
-.halfCircle {
-  overflow: hidden;
-  &__inner {
-    height: 100%;
-    min-width: 200%;
-    margin-left: -100%;
-    border-radius: 50%;
-    background: $gradient-90deg;
-  }
-}
-
 /* -- Title --*/
-.grid__3 {
+.title {
+  @include flex-all-center;
   grid-area: 3/ 5 / span 1 / span 4;
+  justify-content: space-around;
+  align-items: center;
+  color: $color-primary;
+  background: $gradient-90deg;
 
   @include mobile {
     grid-area: 6/1 / span 1 / span 3;
@@ -173,25 +140,13 @@
   @include tablet {
     grid-area: 5/1 / span 1 / span 4;
   }
-}
-
-.title {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: $color-primary;
-  background: $gradient-90deg;
   &__creative {
-    font-size: calc($grid-size-desktop * 0.8);
+    @include responsive-font-size(
+      calc($grid-size-desktop * 0.8),
+      calc($grid-size-tablet * 0.8),
+      calc($grid-size-mobile * 0.6)
+    );
     text-transform: uppercase;
-
-    @include mobile {
-      font-size: calc($grid-size-mobile * 0.6);
-    }
-
-    @include tablet {
-      font-size: calc($grid-size-tablet * 0.8);
-    }
   }
 
   &__item {
@@ -201,22 +156,20 @@
     align-items: center;
 
     h1 {
-      font-size: calc($grid-size-desktop * 0.5);
+      @include responsive-font-size(
+        calc($grid-size-desktop * 0.5),
+        calc($grid-size-tablet * 0.5),
+        calc($grid-size-mobile * 0.4)
+      );
       line-height: 0.8;
-
-      @include mobile {
-        font-size: calc($grid-size-mobile * 0.4);
-      }
-
-      @include tablet {
-        font-size: calc($grid-size-tablet * 0.5);
-      }
     }
   }
 }
 
 /* -- Location -- */
-.grid__4 {
+.location {
+  @include grid-col-2x1;
+  border: $border-primary;
   grid-area: 4/1 / span 1 / span 2;
 
   @include mobile {
@@ -226,13 +179,6 @@
   @include tablet {
     grid-area: 6 /1 / span 1 / span 2;
   }
-}
-.location {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 100%;
-  border: $border-primary;
-
   &__icon {
     @include flex-all-center;
   }
@@ -241,8 +187,11 @@
     @include grid-right-bottom;
   }
 }
+
 /* -- Contact -- */
-.grid__5 {
+.contact {
+  @include grid-col-2x1;
+  border: $border-primary;
   grid-area: 4/7 / span 1 / span 2;
   @include mobile {
     grid-area: 7/2 / span 1 / span 2;
@@ -250,14 +199,6 @@
   @include tablet {
     grid-area: 6 /3 / span 1 / span 2;
   }
-}
-
-.contact {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 100%;
-  border: $border-primary;
-
   &__iconGroup {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -294,12 +235,14 @@
   }
 }
 /** ------ Menu ----- **/
-
 .menu {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(2, 1fr);
+  @include grid-row-1x2;
 
+  &__nav {
+    @include grid-row-1x2;
+    width: 100%;
+    height: 100%;
+  }
   &__icon {
     position: relative;
     align-self: start;
@@ -307,106 +250,77 @@
     padding: 0.5em;
   }
   &__text {
-    align-self: end;
-    justify-self: end;
-    padding: 0.5em;
+    @include grid-right-bottom;
+  }
+
+  &__about {
+    grid-area: 1/ 6 / span 2 / span 1;
+
+    @include mobile {
+      grid-area: 4 /1 / span 2 / span 1;
+    }
+    @include tablet {
+      grid-area: 3 /2 / span 2 / span 1;
+    }
+  }
+  &__work {
+    grid-area: 1/7 / span 2 / span 1;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include mobile {
+      grid-area: 4/ 2 / span 2 / span 1;
+    }
+
+    @include tablet {
+      grid-area: 3/ 3 / span 2 / span 1;
+    }
+  }
+
+  /* -- Resume -- */
+  &__resume {
+    grid-area: 1/ 8 / span 2 / span 1;
+    @include mobile {
+      grid-area: 4/ 3 / span 2 / span 1;
+    }
+    @include tablet {
+      grid-area: 3/ 4 / span 2 / span 1;
+    }
+  }
+
+  &__shape {
+    @include flex-all-center;
+
+    padding: 5%;
+    background-color: $color-secondary;
+    height: 100%;
+    width: 100%;
+
+    &--about,
+    &--work,
+    &--resume {
+      background-color: $color-primary;
+      width: 80%;
+      height: 80%;
+    }
+
+    &--about {
+      transform: rotate(30deg);
+    }
+
+    &--work {
+      border-radius: 50%;
+    }
+
+    &--resume {
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      transform: rotate(-90deg);
+    }
   }
 }
 
-.menuSide {
-  @include flex-all-center;
-  padding: 5%;
-  background-color: $color-secondary;
-
-  &__square {
-    background-color: $color-primary;
-    width: 80%;
-    height: 80%;
-    transform: rotate(30deg);
-  }
-  &__circle {
-    background-color: $color-primary;
-    border-radius: 50%;
-    width: 80%;
-    height: 80%;
-  }
-  &__triangle {
-    background-color: $color-primary;
-    clip-path: polygon(0 0, 100% 0, 0 100%);
-    width: 80%;
-    height: 80%;
-    transform: rotate(-90deg);
-  }
-}
-/* -- About -- */
-.grid__6 {
-  grid-area: 1/ 6 / span 1 / span 1;
-
-  @include mobile {
-    grid-area: 4 /1 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 3 /2 / span 1 / span 1;
-  }
-}
-
-/* -- Work -- */
-.grid__7 {
-  grid-area: 2/7 / span 1 / span 1;
-
-  @include mobile {
-    grid-area: 5/ 2 / span 1 / span 1;
-  }
-
-  @include tablet {
-    grid-area: 4/ 3 / span 1 / span 1;
-  }
-}
-/* -- Resume -- */
-.grid__8 {
-  grid-area: 1/ 8 / span 1 / span 1;
-  @include mobile {
-    grid-area: 4/ 3 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 3/ 4 / span 1 / span 1;
-  }
-}
-
-/* -- About Square -- */
-.grid__9 {
-  grid-area: 2/ 6 / span 1 / span 1;
-  @include mobile {
-    grid-area: 5/ 1 / span 1 / span 1;
-  }
-
-  @include tablet {
-    grid-area: 4/ 2 / span 1 / span 1;
-  }
-}
-/* -- Work Circle -- */
-.grid__10 {
-  grid-area: 1/ 7 / span 1 / span 1;
-  @include mobile {
-    grid-area: 4/ 2 / span 1 / span 1;
-  }
-  @include tablet {
-    grid-area: 3/ 3 / span 1 / span 1;
-  }
-}
-/* -- Resume Triangle -- */
-.grid__11 {
-  grid-area: 2/ 8 / span 1 / span 1;
-  @include mobile {
-    grid-area: 5/ 3 / span 1 / span 1;
-  }
-
-  @include tablet {
-    grid-area: 4/ 4 / span 1 / span 1;
-  }
-}
-/* -- Version -- */
-.grid__12 {
+.version {
+  display: grid;
   grid-area: 2/ 1 / span 1 / span 1;
   @include mobile {
     grid-area: 7/ 1 / span 1 / span 1;
@@ -414,17 +328,30 @@
   @include tablet {
     grid-area: 2/ 1 / span 1 / span 1;
   }
-}
-
-.version {
-  display: grid;
   &__text {
     @include grid-right-bottom;
   }
 }
 
-/* -- Shape -- */
+.halfCircle {
+  grid-area: 1/5 / span 2 / span 1;
+  overflow: hidden;
+  position: relative;
 
+  @include tablet {
+    grid-area: 3 /1 / span 2 / span 1;
+  }
+
+  &__inner {
+    height: 100%;
+    min-width: 200%;
+    margin-left: -100%;
+    border-radius: 50%;
+    background: $gradient-90deg;
+  }
+}
+
+/* -- Shape -- */
 .shape {
   @include flex-all-center;
   padding: 1em;
@@ -436,20 +363,20 @@
   @include tablet {
     display: none;
   }
-}
-.grid__14 {
-  grid-area: 3/ 1 / span 1 / span 1;
-}
+  &__0 {
+    grid-area: 3/ 1 / span 1 / span 1;
+  }
 
-.grid__15 {
-  grid-area: 3/3 / span 1 / span 1;
-}
+  &__2 {
+    grid-area: 3/3 / span 1 / span 1;
+  }
 
-.grid__16 {
-  grid-area: 4/4 / span 1 / span 1;
-}
+  &__5 {
+    grid-area: 4/4 / span 1 / span 1;
+  }
 
-.grid__17 {
-  grid-area: 4/6 / span 1 / span 1;
-  padding: 0;
+  &__7 {
+    grid-area: 4/6 / span 1 / span 1;
+    padding: 0;
+  }
 }

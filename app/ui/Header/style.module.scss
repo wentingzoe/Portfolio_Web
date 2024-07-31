@@ -1,6 +1,6 @@
 /*--- Header ---*/
 .header {
-  @include flex-center;
+  @include flex-cross-center;
   justify-content: space-between;
   padding: calc(var(--gap-padding) / 2);
   position: absolute;
@@ -11,7 +11,7 @@
 
   // Header - Left Logo
   &__logo {
-    @include flex-center;
+    @include flex-cross-center;
     cursor: pointer;
 
     &:hover {
@@ -39,7 +39,7 @@
   }
 
   &__name {
-    @include flex-center;
+    @include flex-cross-center;
     transition: $animation-primary;
     position: relative;
     overflow: hidden;
@@ -60,7 +60,7 @@
 
   // Header - Right Navigation
   &__nav {
-    @include flex-center;
+    @include flex-cross-center;
     margin: 0;
 
     &--small {
@@ -81,7 +81,7 @@
     }
   }
   &__item {
-    @include flex-center;
+    @include flex-cross-center;
     position: relative;
     cursor: pointer;
     margin-right: 1.5em;

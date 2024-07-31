@@ -3,6 +3,18 @@ $base-font-size: 16px;
 $base-line-height: 1.064;
 $base-h1-size: clamp(3.25em, 7vw, 8em);
 
+@mixin responsive-font-size($desktop, $tablet, $mobile) {
+  font-size: $desktop;
+
+  @include tablet {
+    font-size: $tablet;
+  }
+
+  @include mobile {
+    font-size: $mobile;
+  }
+}
+
 /* ---------------- Color Variables ---------------- */
 $color-primary: #000000;
 $color-secondary: #f28705;
