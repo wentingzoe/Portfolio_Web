@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
 
-export default function Home() {
+export default function Landing() {
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -58,13 +58,7 @@ export default function Home() {
         {/* Location */}
         <div className={`${styles.grid} ${styles.location}`}>
           <div className={styles.location__icon}>
-            <Image
-              src="/images/icon_loction.svg"
-              alt="location"
-              layout="responsive"
-              width={100}
-              height={100}
-            />
+            <Image src="/images/icon_loction.svg" alt="location" fill />
           </div>
           <div className={styles.location__text}>
             <h4>Based in</h4>
@@ -82,6 +76,7 @@ export default function Home() {
                 <div key={index} className={styles.contact__gridItem}>
                   {index >= 3 && index < 6 && socialItem ? (
                     <a
+                      className={styles.contact__social}
                       href={socialItem.href}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -89,9 +84,7 @@ export default function Home() {
                       <Image
                         src={`/images/${socialItem.src}`}
                         alt={socialItem.title}
-                        layout="responsive"
-                        width={40}
-                        height={40}
+                        fill
                       />
                     </a>
                   ) : (
@@ -110,6 +103,7 @@ export default function Home() {
         {navItems.slice(1, -1).map((item, index) => {
           const menuClass = `menu__${item.title.toLowerCase()}`;
           const shapeClass = `menu__shape--${item.title.toLowerCase()}`;
+          const ImageClass = `menu__icon__image`;
 
           return (
             <div
@@ -119,11 +113,10 @@ export default function Home() {
               <Link href={item.href} className={styles.menu__nav}>
                 <div className={styles.menu__icon}>
                   <Image
+                    className={styles[ImageClass]}
                     src={`/images/shape_${item.title.toLowerCase()}.svg`}
                     alt={item.title}
-                    layout="responsive"
-                    width={100}
-                    height={40}
+                    fill
                   />
                 </div>
                 <div className={styles.menu__text}>
@@ -150,6 +143,7 @@ export default function Home() {
         {[...Array(8)].map((_, index) => {
           const shapeIndex = [0, 2, 5, 7];
           const shapeName = `shape__${index}`;
+          const shapeImage = `shape__${index}__image`;
 
           if (shapeIndex.includes(index)) {
             const imageIndex = shapeIndex.indexOf(index);
@@ -161,11 +155,10 @@ export default function Home() {
                 className={`${styles.grid} ${styles.shape} ${styles[shapeName]}`}
               >
                 <Image
+                  className={styles[shapeImage]}
                   src={`/images/${image}`}
                   alt={`Shape ${imageIndex + 1}`}
-                  layout="responsive"
-                  width={100}
-                  height={100}
+                  fill
                 />
               </div>
             );
