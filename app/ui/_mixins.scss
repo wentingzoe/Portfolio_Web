@@ -82,6 +82,12 @@ $breakpoint-desktop: 1024px;
   padding: 0.5em;
 }
 
+@mixin grid-left-top {
+  align-self: start;
+  justify-self: start;
+  padding: 0.5em;
+}
+
 @mixin grid-col-2x1 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -144,4 +150,11 @@ $breakpoint-desktop: 1024px;
   height: clamp(1em, 1.5vw, 1.5em);
   background-color: $color-light;
   border-radius: 50%;
+}
+
+@mixin next-responsive-image {
+  position: relative;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
