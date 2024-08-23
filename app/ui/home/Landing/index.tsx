@@ -24,6 +24,13 @@ export default function Landing() {
     return () => clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
+
   return (
     <>
       <section className={styles.landing}>
