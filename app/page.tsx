@@ -16,7 +16,7 @@ export default function Home() {
             focus on producing high quality & impactful digital experience.
           </p>
         </div>
-        <div className={`${styles.foregroundLayer}`} data-cursor-detect>
+        <div className={styles.foregroundLayer} data-cursor-detect>
           <p>
             A visual designer - with skills that haven't been replaced by A.I
             (yet) - making good stuff only if the paycheck is equally good.

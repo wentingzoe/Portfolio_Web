@@ -13,24 +13,6 @@ const Cursor: React.FC = () => {
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
-  const getBaseCursorSize = useCallback(() => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth < 768) return 20;
-      if (window.innerWidth < 1024) return 30;
-      return 40;
-    }
-    return 40;
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setCursorSize(getBaseCursorSize());
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [getBaseCursorSize]);
-
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       const size = isHovered ? cursorSize * 5 : cursorSize;
@@ -39,14 +21,15 @@ const Cursor: React.FC = () => {
       cursorX.set(newX);
       cursorY.set(newY);
 
-      document.documentElement.style.setProperty(
-        "--cursor-x",
-        `${event.clientX}px`
-      );
-      document.documentElement.style.setProperty(
-        "--cursor-y",
-        `${event.clientY}px`
-      );
+      document.documentElement.style.setProperty("--cursor-x", `${newX}px`);
+      document.documentElement.style.setProperty("--cursor-y", `${newY}px`);
+      document.documentElement.style.setProperty("--cursor-size", `${size}px`);
+
+      // Apply clip-path to elements with data-cursor-detect
+      const hoverElements = document.querySelectorAll("[data-cursor-detect]");
+      hoverElements.forEach((el) => {
+        el.style.clipPath = `circle(${size}px at ${event.clientX}px ${event.clientY}px)`;
+      });
     };
 
     const handleHover = (event: MouseEvent) => {
