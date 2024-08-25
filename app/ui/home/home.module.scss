@@ -24,12 +24,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: #fff 1px solid;
-
-  p {
-    height: 20%;
-    border: #000 1px solid;
-  }
 }
 
 .backgroundLayer {
@@ -38,17 +32,8 @@
   z-index: 1;
 }
 
-.mask {
-  background-color: #afa18f;
-  color: #000;
+.foregroundLayer {
+  background-color: #000;
+  color: #ec4e39;
   z-index: 2;
-  mask-image: url("../../../public/images/mask.svg");
-  mask-repeat: no-repeat;
-  mask-position: var(--mouse-x) var(--mouse-y);
-  mask-size: 40px;
-  transition: mask-size 0.3s ease;
-
-  &:hover {
-    mask-size: 400px;
-  }
 }

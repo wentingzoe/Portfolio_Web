@@ -5,23 +5,6 @@ import Landing from "@/app/ui/home/Landing/index";
 import Projects from "@/app/ui/home/Projects";
 
 export default function Home() {
-  const maskRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (maskRef.current) {
-        const rect = maskRef.current.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        maskRef.current.style.setProperty("--mouse-x", `${x}px`);
-        maskRef.current.style.setProperty("--mouse-y", `${y}px`);
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <main className={styles.main}>
       <Landing />
@@ -33,14 +16,10 @@ export default function Home() {
             focus on producing high quality & impactful digital experience.
           </p>
         </div>
-        <div
-          className={`${styles.foregroundLayer} ${styles.mask}`}
-          data-cursor-detect
-          ref={maskRef}
-        >
+        <div className={`${styles.foregroundLayer}`} data-cursor-detect>
           <p>
             A visual designer - with skills that haven't been replaced by A.I
-            (yet) - making good shit only if the paycheck is equally good.
+            (yet) - making good stuff only if the paycheck is equally good.
           </p>
         </div>
       </div>

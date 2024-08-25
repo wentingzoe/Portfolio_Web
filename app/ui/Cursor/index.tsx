@@ -33,11 +33,20 @@ const Cursor: React.FC = () => {
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      const size = isHovered ? cursorSize * 10 : cursorSize;
+      const size = isHovered ? cursorSize * 5 : cursorSize;
       const newX = event.clientX - size / 2;
       const newY = event.clientY - size / 2;
       cursorX.set(newX);
       cursorY.set(newY);
+
+      document.documentElement.style.setProperty(
+        "--cursor-x",
+        `${event.clientX}px`
+      );
+      document.documentElement.style.setProperty(
+        "--cursor-y",
+        `${event.clientY}px`
+      );
     };
 
     const handleHover = (event: MouseEvent) => {
@@ -57,7 +66,7 @@ const Cursor: React.FC = () => {
     };
   }, [cursorX, cursorY, cursorSize, isHovered]);
 
-  const size = isHovered ? cursorSize * 10 : cursorSize;
+  const size = isHovered ? cursorSize * 5 : cursorSize;
 
   return (
     <motion.div

@@ -8,10 +8,8 @@
   border-radius: 50%;
   transition: background-color 0.2s ease;
   mix-blend-mode: difference;
-  // transform: translate(-50%, -50%);
 
   &.cursorHovered {
     mix-blend-mode: normal;
-    background-color: transparent;
   }
 }
