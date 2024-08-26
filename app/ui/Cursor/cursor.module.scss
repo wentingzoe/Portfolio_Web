@@ -1,22 +1,14 @@
 .cursor {
-  pointer-events: none;
   position: fixed;
   top: 0;
   left: 0;
-  // width: $cursor-size;
-  // height: $cursor-size;
-  z-index: 9999;
-  background-color: $color-secondary;
   border-radius: 50%;
-  mix-blend-mode: difference;
-  transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
-    opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+  background-color: $color-secondary;
+  transform: translate(-50%, -50%);
+}
 
-  &.hovering {
-    mix-blend-mode: normal;
-    background-color: transparent;
-
-    transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
-      opacity 0.3s ease;
-  }
+.hovering {
+  background-color: transparent;
 }

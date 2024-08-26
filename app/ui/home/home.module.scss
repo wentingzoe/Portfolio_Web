@@ -33,8 +33,19 @@
 }
 
 .foregroundLayer {
-  background-color: greenyellow;
-  color: #ec4e39;
   z-index: 2;
   opacity: 0;
+}
+
+.mask {
+  mask-image: url("../../../public/images/mask.svg");
+  mask-repeat: no-repeat;
+  background-color: $color-primary;
+  position: absolute;
+
+  transition: opacity 0.5s ease-out;
+}
+
+.hovered {
+  opacity: 1;
 }

@@ -1,3 +1,4 @@
+// components/Cursor.js
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
@@ -7,8 +8,8 @@ const Cursor = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const [cursorSize, setCursorSize] = useState(40);
-  const [isHovering, setIsHovering] = useState(false); // State to track hovering
-  const hoverRef = useRef(null); // Ref to manage hover state more consistently
+  const [isHovering, setIsHovering] = useState(false);
+  const hoverRef = useRef(null);
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);
@@ -16,13 +17,16 @@ const Cursor = () => {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const size = isHovering ? cursorSize * 2 : cursorSize;
-      cursorX.set(event.clientX - size / 2);
-      cursorY.set(event.clientY - size / 2);
+      const size = isHovering ? cursorSize * 5 : cursorSize;
+      const halfSize = size / 2;
+      cursorX.set(event.clientX - halfSize);
+      cursorY.set(event.clientY - halfSize);
 
       if (isHovering && hoverRef.current) {
-        hoverRef.current.style.clipPath = `circle(${size}px at ${event.clientX}px ${event.clientY}px)`;
-        hoverRef.current.style.opacity = "1";
+        hoverRef.current.style.WebkitMaskPosition = `${
+          event.clientX - halfSize
+        }px ${event.clientY - halfSize}px`;
+        hoverRef.current.style.WebkitMaskSize = `${size}px`;
       }
     };
 
@@ -30,17 +34,13 @@ const Cursor = () => {
       const target = event.target.closest("[data-cursor-detect]");
       if (target) {
         hoverRef.current = target;
-        setIsHovering(true); // Start hovering
+        setIsHovering(true);
       }
     };
 
     const handleMouseOut = () => {
-      if (hoverRef.current) {
-        hoverRef.current.style.clipPath = "none";
-        hoverRef.current.style.opacity = "0";
-      }
       hoverRef.current = null;
-      setIsHovering(false); // Stop hovering
+      setIsHovering(false);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -58,9 +58,8 @@ const Cursor = () => {
     <motion.div
       className={`${styles.cursor} ${isHovering ? styles.hovering : ""}`}
       style={{
-        width: isHovering ? cursorSize * 2 : cursorSize,
-        height: isHovering ? cursorSize * 2 : cursorSize,
-
+        width: isHovering ? cursorSize * 5 : cursorSize,
+        height: isHovering ? cursorSize * 5 : cursorSize,
         x: cursorXSpring,
         y: cursorYSpring,
       }}
