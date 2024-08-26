@@ -3,14 +3,22 @@
   position: fixed;
   top: 0;
   left: 0;
+  // width: $cursor-size;
+  // height: $cursor-size;
   z-index: 9999;
   background-color: $color-secondary;
   border-radius: 50%;
   mix-blend-mode: difference;
+  transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
+    opacity 0.3s ease;
 
   &.cursorHovered {
     mix-blend-mode: normal;
-    // background-color: transparent;
-    transition: background-color 0.2s ease;
+    background-color: transparent;
+
+    // width: $cursor-hover-size;
+    // height: $cursor-hover-size;
+    transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
+      opacity 0.3s ease;
   }
 }

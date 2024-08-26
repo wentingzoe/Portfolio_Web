@@ -1,62 +1,60 @@
 "use client";
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import styles from "./cursor.module.scss";
 
-const Cursor: React.FC = () => {
+const Cursor = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
-  const [isHovered, setIsHovered] = useState(false);
   const [cursorSize, setCursorSize] = useState(40);
+  const hoverRef = useRef(null); // Ref to manage hover state more consistently
 
   const springConfig = { damping: 25, stiffness: 700 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const size = isHovered ? cursorSize * 5 : cursorSize;
-      const newX = event.clientX - size / 2;
-      const newY = event.clientY - size / 2;
-      cursorX.set(newX);
-      cursorY.set(newY);
+    const handleMouseMove = (event) => {
+      const size = hoverRef.current ? cursorSize * 2 : cursorSize;
+      cursorX.set(event.clientX - size / 2);
+      cursorY.set(event.clientY - size / 2);
 
-      document.documentElement.style.setProperty("--cursor-x", `${newX}px`);
-      document.documentElement.style.setProperty("--cursor-y", `${newY}px`);
-      document.documentElement.style.setProperty("--cursor-size", `${size}px`);
-
-      // Apply clip-path to elements with data-cursor-detect
-      const hoverElements = document.querySelectorAll("[data-cursor-detect]");
-      hoverElements.forEach((el) => {
-        el.style.clipPath = `circle(${size}px at ${event.clientX}px ${event.clientY}px)`;
-      });
+      if (hoverRef.current) {
+        hoverRef.current.style.clipPath = `circle(${size}px at ${event.clientX}px ${event.clientY}px)`;
+        hoverRef.current.style.opacity = "1";
+      }
     };
 
-    const handleHover = (event: MouseEvent) => {
-      const target = event.target as HTMLElement;
-      const hoverArea = target.closest("[data-cursor-detect]") as HTMLElement;
-      setIsHovered(!!hoverArea);
+    const handleMouseOverOut = (event) => {
+      const target = event.target.closest("[data-cursor-detect]");
+      if (event.type === "mouseover" && target) {
+        hoverRef.current = target;
+      } else if (event.type === "mouseout" && target) {
+        if (hoverRef.current) {
+          hoverRef.current.style.clipPath = "none";
+          hoverRef.current.style.opacity = "0";
+        }
+        hoverRef.current = null;
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseover", handleHover);
-    document.addEventListener("mouseout", () => setIsHovered(false));
+    window.addEventListener("mouseover", handleMouseOverOut);
+    window.addEventListener("mouseout", handleMouseOverOut);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseover", handleHover);
-      document.removeEventListener("mouseout", () => setIsHovered(false));
+      window.removeEventListener("mouseover", handleMouseOverOut);
+      window.removeEventListener("mouseout", handleMouseOverOut);
     };
-  }, [cursorX, cursorY, cursorSize, isHovered]);
-
-  const size = isHovered ? cursorSize * 5 : cursorSize;
+  }, [cursorX, cursorY, cursorSize]);
 
   return (
     <motion.div
-      className={`${styles.cursor} ${isHovered ? styles.cursorHovered : ""}`}
+      className={styles.cursor}
       style={{
-        width: size,
-        height: size,
+        width: hoverRef.current ? cursorSize * 2 : cursorSize,
+        height: hoverRef.current ? cursorSize * 2 : cursorSize,
         x: cursorXSpring,
         y: cursorYSpring,
       }}
