@@ -7,6 +7,7 @@ const Cursor = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const [cursorSize, setCursorSize] = useState(40);
+  const [isHovering, setIsHovering] = useState(false); // State to track hovering
   const hoverRef = useRef(null); // Ref to manage hover state more consistently
 
   const springConfig = { damping: 25, stiffness: 700 };
@@ -15,46 +16,51 @@ const Cursor = () => {
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const size = hoverRef.current ? cursorSize * 2 : cursorSize;
+      const size = isHovering ? cursorSize * 2 : cursorSize;
       cursorX.set(event.clientX - size / 2);
       cursorY.set(event.clientY - size / 2);
 
-      if (hoverRef.current) {
+      if (isHovering && hoverRef.current) {
         hoverRef.current.style.clipPath = `circle(${size}px at ${event.clientX}px ${event.clientY}px)`;
         hoverRef.current.style.opacity = "1";
       }
     };
 
-    const handleMouseOverOut = (event) => {
+    const handleMouseOver = (event) => {
       const target = event.target.closest("[data-cursor-detect]");
-      if (event.type === "mouseover" && target) {
+      if (target) {
         hoverRef.current = target;
-      } else if (event.type === "mouseout" && target) {
-        if (hoverRef.current) {
-          hoverRef.current.style.clipPath = "none";
-          hoverRef.current.style.opacity = "0";
-        }
-        hoverRef.current = null;
+        setIsHovering(true); // Start hovering
       }
     };
 
+    const handleMouseOut = () => {
+      if (hoverRef.current) {
+        hoverRef.current.style.clipPath = "none";
+        hoverRef.current.style.opacity = "0";
+      }
+      hoverRef.current = null;
+      setIsHovering(false); // Stop hovering
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOverOut);
-    window.addEventListener("mouseout", handleMouseOverOut);
+    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener("mouseout", handleMouseOut);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOverOut);
-      window.removeEventListener("mouseout", handleMouseOverOut);
+      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [cursorX, cursorY, cursorSize]);
+  }, [cursorX, cursorY, cursorSize, isHovering]);
 
   return (
     <motion.div
-      className={styles.cursor}
+      className={`${styles.cursor} ${isHovering ? styles.hovering : ""}`}
       style={{
-        width: hoverRef.current ? cursorSize * 2 : cursorSize,
-        height: hoverRef.current ? cursorSize * 2 : cursorSize,
+        width: isHovering ? cursorSize * 2 : cursorSize,
+        height: isHovering ? cursorSize * 2 : cursorSize,
+
         x: cursorXSpring,
         y: cursorYSpring,
       }}

@@ -12,12 +12,10 @@
   transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
     opacity 0.3s ease;
 
-  &.cursorHovered {
+  &.hovering {
     mix-blend-mode: normal;
     background-color: transparent;
 
-    // width: $cursor-hover-size;
-    // height: $cursor-hover-size;
     transition: background-color 0.2s ease, width 0.3s ease, height 0.3s ease,
       opacity 0.3s ease;
   }
