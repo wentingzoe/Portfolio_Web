@@ -1,28 +1,38 @@
 "use client";
-import { useEffect } from "react";
-import styles from "@/app/home/home.module.scss";
+import { useEffect, useState } from "react";
+import styles from "@/app/ui/home/home.module.scss";
 import Landing from "@/app/ui/home/Landing/index";
 import Projects from "@/app/ui/home/Projects";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  useEffect(() => {
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll();
-    })();
-  }, []);
-
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <main>
-      {/* <AnimatePresence mode='wait'>
-        {isLoading && <Preloader />}
-      </AnimatePresence>
-      <Landing />
-      <Description />
-      <SlidingImages />
-      <Contact /> */}
+    <main className={styles.main}>
       <Landing />
       <Projects />
+
+      {/* Test Cursor Hover */}
+      <div className={styles.content}>
+        <div className={styles.backgroundLayer}>
+          <p>
+            I&apos;m a <span>selectively skilled</span> product designer with a
+            focus on quality.
+          </p>
+        </div>
+
+        <motion.div
+          className={`${styles.foregroundLayer} ${styles.mask} ${
+            isHovered ? styles.hovered : ""
+          }`}
+          transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          data-cursor-detect
+        >
+          <p>A visual designer making good stuff with AI technology.</p>
+        </motion.div>
+      </div>
     </main>
   );
 }
