@@ -16,8 +16,8 @@ export default function Home() {
       <div className={styles.content}>
         <div className={styles.backgroundLayer}>
           <p>
-            I'm a <span>selectively skilled</span> product designer with a focus
-            on quality.
+            I&apos;m a <span>selectively skilled</span> product designer with a
+            focus on quality.
           </p>
         </div>
 
