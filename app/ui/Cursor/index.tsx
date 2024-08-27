@@ -1,68 +1,41 @@
-// components/Cursor.js
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { useHoverMask } from "./useHoverMask";
 import styles from "./cursor.module.scss";
 
 const Cursor = () => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-  const [cursorSize, setCursorSize] = useState(40);
-  const [isHovering, setIsHovering] = useState(false);
-  const hoverRef = useRef(null);
+  const [cursorX, setCursorX] = useState(0);
+  const [cursorY, setCursorY] = useState(0);
+  const cursorSize = 40;
 
-  const springConfig = { damping: 25, stiffness: 700 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const { isHovering, hoverRef } = useHoverMask(cursorSize);
 
   useEffect(() => {
     const handleMouseMove = (event) => {
-      const size = isHovering ? cursorSize * 5 : cursorSize;
-      const halfSize = size / 2;
-      cursorX.set(event.clientX - halfSize);
-      cursorY.set(event.clientY - halfSize);
-
-      if (isHovering && hoverRef.current) {
-        hoverRef.current.style.WebkitMaskPosition = `${
-          event.clientX - halfSize
-        }px ${event.clientY - halfSize}px`;
-        hoverRef.current.style.WebkitMaskSize = `${size}px`;
-      }
-    };
-
-    const handleMouseOver = (event) => {
-      const target = event.target.closest("[data-cursor-detect]");
-      if (target) {
-        hoverRef.current = target;
-        setIsHovering(true);
-      }
-    };
-
-    const handleMouseOut = () => {
-      hoverRef.current = null;
-      setIsHovering(false);
+      setCursorX(event.clientX);
+      setCursorY(event.clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
-    window.addEventListener("mouseout", handleMouseOut);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
-      window.removeEventListener("mouseout", handleMouseOut);
     };
-  }, [cursorX, cursorY, cursorSize, isHovering]);
+  }, []);
+
+  const cursorStyle = {
+    width: isHovering ? cursorSize * 5 : cursorSize,
+    height: isHovering ? cursorSize * 5 : cursorSize,
+    transform: `translate(${
+      cursorX - (isHovering ? cursorSize * 2.5 : cursorSize / 2)
+    }px, ${cursorY - (isHovering ? cursorSize * 2.5 : cursorSize / 2)}px)`,
+  };
 
   return (
-    <motion.div
+    <div
       className={`${styles.cursor} ${isHovering ? styles.hovering : ""}`}
-      style={{
-        width: isHovering ? cursorSize * 5 : cursorSize,
-        height: isHovering ? cursorSize * 5 : cursorSize,
-        x: cursorXSpring,
-        y: cursorYSpring,
-      }}
+      style={cursorStyle}
+      ref={hoverRef}
     />
   );
 };

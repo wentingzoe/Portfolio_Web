@@ -10,8 +10,7 @@
   height: 100vh;
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  border: red 1px solid;
 }
 
 .backgroundLayer,
@@ -42,7 +41,6 @@
   mask-repeat: no-repeat;
   background-color: $color-primary;
   position: absolute;
-
   transition: opacity 0.5s ease-out;
 }
 

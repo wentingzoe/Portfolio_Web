@@ -25,6 +25,7 @@ export default function Home() {
           className={`${styles.foregroundLayer} ${styles.mask} ${
             isHovered ? styles.hovered : ""
           }`}
+          transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           data-cursor-detect
