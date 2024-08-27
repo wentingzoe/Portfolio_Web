@@ -11,7 +11,7 @@ const Cursor = () => {
   const { isHovering, hoverRef } = useHoverMask(cursorSize);
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
+    const handleMouseMove = (event: MouseEvent) => {
       setCursorX(event.clientX);
       setCursorY(event.clientY);
     };
